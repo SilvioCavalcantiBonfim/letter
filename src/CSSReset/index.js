@@ -12,15 +12,15 @@ export const CSSReset = createGlobalStyle`
         list-style:none;
         border:0
     }
-    *:hover,*:focus{
+    *:focus{
         outline: none;
         border: none;
     }
     body {
-        font-size: 45px;
+        font-size: 57px;
         line-height: 1;
         font-family: 'Roboto', sans-serif;
-        background-color: ${({theme}) => `var(--m3--surfaces--${theme.type}--surface1)`};
+        background-color: ${({theme}) => `var(--m3--sys--${theme.type}--surface)`};
     }
 
 `;
