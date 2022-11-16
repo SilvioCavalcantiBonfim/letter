@@ -1,6 +1,15 @@
 import Head from "next/head";
+import styled from "styled-components";
 import Header from "../src/components/header";
 import LetterBox from "../src/components/letterBox";
+
+const StyledBody = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
 
 const Page = () => {
     return (<>
@@ -8,7 +17,9 @@ const Page = () => {
             <title>Letter</title>
         </Head>
         <Header />
-        {[...Array(1)].map( (e,i) => <LetterBox key={i}/>)}
+        <StyledBody>
+            {[...Array(10)].map( (e,i) => <LetterBox key={i}/>)}
+        </StyledBody>
     </>);
 }
 

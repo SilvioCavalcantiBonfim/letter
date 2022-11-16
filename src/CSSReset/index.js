@@ -10,7 +10,10 @@ export const CSSReset = createGlobalStyle`
         margin:0;
         vertical-align:baseline;
         list-style:none;
-        border:0
+        border:0;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
     *:focus{
         outline: none;
@@ -20,7 +23,7 @@ export const CSSReset = createGlobalStyle`
         font-size: 57px;
         line-height: 1;
         font-family: 'Roboto', sans-serif;
-        background-color: ${({theme}) => `var(--m3--sys--${theme.type}--surface)`};
+        background-color: ${({ theme }) => `var(--m3--sys--${theme.type}--surface)`};
     }
 
 `;
