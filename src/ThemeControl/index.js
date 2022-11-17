@@ -1,14 +1,16 @@
 import react from "react";
 
 
-export const ThemeModeContext = react.createContext({mode: 0, setThemeMode: () => alert("error")});
+export const ThemeModeContext = react.createContext({color: "", setThemeMode: () => alert("error")});
 
 const ThemeModeProvider = (props) => {
-    const [ThemeMode, SetThemeMode] = react.useState(props.init);
+    const [ThemeProps, SetThemeProps] = react.useState(props.init);
 
-    const HandleTheme = () => {SetThemeMode(v => 1 - v)}
+    const HandleColor = (c) => {
+        SetThemeProps({color: c});
+    }
 
-    return(<ThemeModeContext.Provider value={{mode: ThemeMode, setMode: HandleTheme}}>
+    return(<ThemeModeContext.Provider value={{color:ThemeProps.color, setColor: HandleColor}}>
         {props.children}
     </ThemeModeContext.Provider>);
 }

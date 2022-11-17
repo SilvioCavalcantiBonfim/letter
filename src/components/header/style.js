@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.div`
-    color: ${({ theme }) => `var(--m3--sys--${theme.type}--color--primary)`};
+    color: var(--m3--sys--light--color--primary);
     font-size: 5rem;
-    padding: 30px 30px;
+    padding: 30px 0px;
     overflow: none;
-    svg{
-        width: 300px;
-    }
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 `;

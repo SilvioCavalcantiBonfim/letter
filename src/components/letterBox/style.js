@@ -1,16 +1,47 @@
 import styled from "styled-components";
 
 export const StyledLatter = styled.div`
-    background-color: ${({ theme }) => `var(--m3--sys--${theme.type}--inverse-on-surface)`};
-    outline: ${({ theme }) => `var(--m3--sys--${theme.type}--outline-variant)`} solid 1px;
+    background-color: var(--m3--sys--light--inverse-on-surface);
+    outline: var(--m3--sys--light--outline-variant) solid 1px;
     width: 360px;
     height: 480px;
     margin: 30px;
     border-radius: 12px;
     transition: box-shadow .3s ease-in-out;
-    box-shadow: ${({ theme }) => `var(--m3---elevation--${theme.type}--2)`};
+    box-shadow: var(--m3---elevation--light--2);
+    .ConteinerOptions{
+        position: relative;
+        display: ${({display}) => display[0]};
+        left: -66px;
+        margin-top: 4px;
+        .Options{
+            width: 110px;
+            box-shadow: var(--m3---elevation--light--2);
+            background-color: var(--m3--sys--light--inverse-on-surface);
+            border-radius: 4px;
+            .WarningButton{
+                width: 100%;
+                border-radius: 4px;
+                font-size: 57px;
+                padding: 5px 0px;
+                display: flex;
+                cursor: pointer;
+                justify-content: center;
+                color: var(--m3--sys--light--error);
+                div{
+                    font-size: var(--m3--body--medium);
+                    height: 24px;
+                    line-height: 24px;
+                    margin-left: 4px;
+                }
+                &:hover{
+                    background-color: var(--m3--sys--light--error-container);
+                }
+            }
+        }
+    }
     &:hover{
-        box-shadow: ${({ theme }) => `var(--m3---elevation--${theme.type}--4)`};
+        box-shadow: var(--m3---elevation--light--4);
     }
     .header{
         height: 48px;
@@ -22,10 +53,28 @@ export const StyledLatter = styled.div`
         flex-direction: row;
         .icon-button{
             width: 48px;
-            font-size: 0px;
             height: 48px;
+            font-size: 0px;
             background-color: transparent;
-            color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface-variant)`};
+            color: var(--m3--sys--light--on-surface-variant);
+            
+            button{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: transparent;
+                cursor: pointer;
+                &:hover{
+                    background-color: var(--m3--state-layers--light--primary--opacity-012);
+                }
+                .IconButtonSVG{
+                    transform: rotate(${({display}) => display[1]});
+                    transition: transform .1s ease-in-out;
+                }
+            }
         }
         .content{
             width: 292px;
@@ -33,13 +82,13 @@ export const StyledLatter = styled.div`
             display: flex;
             justify-content: space-between;
             .monogram{
-                background-color: ${({ theme }) => `var(--m3--sys--${theme.type}--primary)`};
+                background-color: var(--m3--sys--light--primary);
                 width: 40px;
                 font-size: 0px;
                 height: 40px;
                 margin-top: 4px;
                 border-radius: 50%;
-                color: ${({ theme }) => `var(--m3--sys--${theme.type}--inverse-on-surface)`};
+                color: var(--m3--sys--light--inverse-on-surface);
                 svg{
                     margin-top: 10px;
                     margin-left: 10px;
@@ -49,14 +98,14 @@ export const StyledLatter = styled.div`
                 width: 236px;
                 .text-header{
                     line-height: 24px;
-                    color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface)`};
+                    color: var(--m3--sys--light--on-surface);
                     font-weight: bold;
                     font-size: var(--m3--title--medium);
                     height: 24px;
                 }
                 .text-subhead{
                     line-height: 24px;
-                    color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface)`};
+                    color: var(--m3--sys--light--on-surface);
                     font-size: var(--m3--body--medium);
                     height: 24px;
                 }
@@ -83,21 +132,21 @@ export const StyledLatter = styled.div`
                 height: 24px;
                 line-height: 24px;
                 font-size: var(--m3--body--large);
-                color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface)`};
+                color: var(--m3--sys--light--on-surface);
             }
             .subhead{
                 width: 100%;
                 height: 20px;
                 line-height: 20px;
                 font-size: var(--m3--body--medium);
-                color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface-variant)`};
+                color: var(--m3--sys--light--on-surface-variant);
             }
         }
         .supporting-text{
             width: 328px;
             height: 44px;
             margin: 16px;
-            color: ${({ theme }) => `var(--m3--sys--${theme.type}--on-surface-variant)`};
+            color: var(--m3--sys--light--on-surface-variant);
             font-size: var(--m3--body--medium);
             text-overflow: ellipsis;
         }
@@ -122,7 +171,7 @@ export const StyledLatter = styled.div`
                     animation: buttonAnimation .9s linear;
                 }
                 &:hover{
-                    box-shadow: ${({ theme }) => `var(--m3---elevation--${theme.type}--4)`};
+                    box-shadow: var(--m3---elevation--light--4);
                 }
                 @keyframes buttonAnimation {
                     0% {transform: rotate(0deg);}
@@ -132,18 +181,18 @@ export const StyledLatter = styled.div`
                 }
             }
             .button1{
-                color: ${({ theme }) => `var(--m3--sys--${theme.type}--primary)`};
+                color: var(--m3--sys--light--primary);
                 margin-right: 8px;
                 &:hover{
-                    background-color: ${({ theme }) => `var(--m3--sys--${theme.type}--error-container)`};
-                    color: ${({ theme }) => `var(--m3--sys--${theme.type}--error)`};
+                    background-color: var(--m3--sys--light--error-container);
+                    color: var(--m3--sys--light--error);
                 }
             }
             .button2{
-                color: ${({ theme }) => `var(--m3--sys--${theme.type}--primary)`};  
+                color: var(--m3--sys--light--primary);  
                 &:hover{
-                    background-color: ${({ theme }) => `var(--m3--sys--${theme.type}--success-container)`};
-                    color: ${({ theme }) => `var(--m3--sys--${theme.type}--success)`};
+                    background-color: var(--m3--sys--light--success-container);
+                    color: var(--m3--sys--light--success);
                 }
             }
         }

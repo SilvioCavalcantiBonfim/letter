@@ -9,7 +9,7 @@ const Theme = [{type: 'dark'}, {type: 'light'}];
 const Root = ({ Component, pageProps }) => {
 
     const ModeContext = react.useContext(ThemeModeContext);
-    return (<ThemeProvider theme={Theme[ModeContext.mode]}>
+    return (<ThemeProvider theme={{color: ModeContext.color}}>
             <M3Variable/>
             <CSSReset />
             <Component {...pageProps} />
@@ -17,7 +17,7 @@ const Root = ({ Component, pageProps }) => {
 }
 
 const _App = (props) => {
-    return(<ThemeModeProvider init={1}>
+    return(<ThemeModeProvider init={{color: "lavender"}}>
         <Root {...props}/>
     </ThemeModeProvider>);
 }
