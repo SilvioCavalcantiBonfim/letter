@@ -18,7 +18,7 @@ const Page = () => {
         </Head>
         <Header />
         <StyledBody>
-            {[...Array(6)].map( (e,i) => <LetterBox key={i}/>)}
+            {[...Array(6)].map( (e,i) => <LetterBox id={i} key={i}/>)}
         </StyledBody>
     </>);
 }

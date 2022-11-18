@@ -34,6 +34,7 @@ export const M3Variable = createGlobalStyle`
         --m3--sys--light--success: rgba(38, 140, 85, 1);
         --m3--sys--light--success-container: rgba(227, 251, 238, 1);
         --m3--sys--light--color--primary: rgba(255, 255, 255, 1);
+        --m3--sys--light--inverse-surface: rgba(49, 48, 51, 1);
 
         --m3--state-layers--light--primary--opacity-008: rgba(103, 80, 164, 0.07999999821186066);
         --m3--state-layers--light--primary--opacity-012: rgba(103, 80, 164, 0.11999999731779099);
