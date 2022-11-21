@@ -101,7 +101,7 @@ export const StyledColorSelect = styled.div`
         height: 24px;
         cursor: pointer;
         border-radius: 50%;
-        border: solid 2px var(--m3--ref--${({ theme }) => theme.color}--primary10);
+        border: solid 2px var(--m3--ref--lavender--primary90);
         background-color: var(--m3--ref--lavender--primary40);
         box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
         &:hover{
@@ -130,6 +130,18 @@ export const StyledColorSelect = styled.div`
         box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
         &:hover{
             background-color: var(--m3--ref--pink--primary60);
+        }
+    }
+    .Color5{
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        border-radius: 50%;
+        border: solid 2px var(--m3--ref--blue--primary90);
+        background-color: var(--m3--ref--blue--primary40);
+        box-shadow: var(--m3---elevation--light--2);
+        &:hover{
+            background-color: var(--m3--ref--blue--primary60);
         }
     }
 `;

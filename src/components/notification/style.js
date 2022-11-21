@@ -10,6 +10,30 @@ export const StyledNotification = styled.div`
     color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
     box-shadow: var(--m3---elevation--light--3);
     margin: 4px 0px;
+    animation: ${({destroy}) => destroy? `destroyAnimation .65s linear`: `none`};
+    position: relative;
+
+    @keyframes destroyAnimation {
+        0% {opacity: 1}
+        100% {opacity: 0}
+    }
+
+    .barTime{
+        position: absolute;
+        width: 0px;
+        left: 48px;
+        bottom: 0px;
+        border-bottom-right-radius: 4px;
+        background-color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
+        height: 3px;
+        animation: TimerExit 29.5s linear;
+    }
+
+    @keyframes TimerExit {
+        0% {width: calc(100% - 48px);border-bottom-right-radius: 4px}
+        1% {border-bottom-right-radius: 0px}
+        100% {width: 0px}
+    }
     .NotificationIcon{
         width: 48px;
         height: 48px;

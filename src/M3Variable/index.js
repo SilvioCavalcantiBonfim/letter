@@ -35,6 +35,8 @@ export const M3Variable = createGlobalStyle`
         --m3--sys--light--success-container: rgba(227, 251, 238, 1);
         --m3--sys--light--color--primary: rgba(255, 255, 255, 1);
         --m3--sys--light--inverse-surface: rgba(49, 48, 51, 1);
+        --m3--sys--light--surface: rgba(255, 251, 254, 1);
+        --m3--sys--light--surface05: rgba(255, 251, 254, 0.5);
 
         --m3--state-layers--light--primary--opacity-008: rgba(103, 80, 164, 0.07999999821186066);
         --m3--state-layers--light--primary--opacity-012: rgba(103, 80, 164, 0.11999999731779099);
@@ -46,33 +48,33 @@ export const M3Variable = createGlobalStyle`
         --m3--surfaces--light--surface4: rgba(255, 251, 254, 1);
         --m3--surfaces--light--surface5: rgba(255, 251, 254, 1);
         /* base size: m3--display--large (57px) */
-        --m3--display--large: 1em;
-        --m3--display--medium: 0.79em;
-        --m3--display--small: 0.63em;
-        --m3--headline--large: 0.56em;
-        --m3--headline--medium: 0.49em;
-        --m3--headline--small: 0.42em;
-        --m3--title--large: 0.39em;
-        --m3--title--medium: 0.28em;
-        --m3--title--small: 0.25em;
-        --m3--label--large: 0.25em;
-        --m3--label--medium: 0.21em;
-        --m3--label--small: 0.19em;
-        --m3--body--large: 0.28em;
-        --m3--body--medium: 0.25em;
-        --m3--body--small: 0.21em;
+        --m3--display--large: 1rem;
+        --m3--display--medium: 0.79rem;
+        --m3--display--small: 0.63rem;
+        --m3--headline--large: 0.56rem;
+        --m3--headline--medium: 0.49rem;
+        --m3--headline--small: 0.42rem;
+        --m3--title--large: 0.39rem;
+        --m3--title--medium: 0.28rem;
+        --m3--title--small: 0.25rem;
+        --m3--label--large: 0.25rem;
+        --m3--label--medium: 0.21rem;
+        --m3--label--small: 0.19rem;
+        --m3--body--large: 0.28rem;
+        --m3--body--medium: 0.25rem;
+        --m3--body--small: 0.21rem;
 
         /* Ref lavender*/
         --m3--ref--lavender--primary100: rgba(255, 255, 255, 1);
         --m3--ref--lavender--primary90: rgba(234, 221, 255, 1);
-        --m3--ref--lavender--primary80: rgba(35, 42, 92, 1);
-        --m3--ref--lavender--primary70: rgba(64, 73, 150, 1);
-        --m3--ref--lavender--primary60: rgba(98, 105, 197, 1);
-        --m3--ref--lavender--primary50: rgba(129, 138, 236, 1);
-        --m3--ref--lavender--primary40: rgba(159, 166, 255, 1);
-        --m3--ref--lavender--primary30: rgba(185, 190, 255, 1);
-        --m3--ref--lavender--primary20: rgba(217, 220, 253, 1);
-        --m3--ref--lavender--primary10: rgba(235, 236, 255, 1);
+        --m3--ref--lavender--primary80: rgba(235, 236, 255, 1);
+        --m3--ref--lavender--primary70: rgba(217, 220, 253, 1);
+        --m3--ref--lavender--primary60: rgba(185, 190, 255, 1);
+        --m3--ref--lavender--primary50: rgba(159, 166, 255, 1);
+        --m3--ref--lavender--primary40: rgba(129, 138, 236, 1);
+        --m3--ref--lavender--primary30: rgba(98, 105, 197, 1);
+        --m3--ref--lavender--primary20: rgba(64, 73, 150, 1);
+        --m3--ref--lavender--primary10: rgba(35, 42, 92, 1);
         --m3--ref--lavender--primary0: rgba(0, 0, 0, 1);
 
         /*ref gold*/
@@ -126,5 +128,20 @@ export const M3Variable = createGlobalStyle`
         --m3--ref--charcoal--primary20: rgba(116, 132, 148, 1);
         --m3--ref--charcoal--primary10: rgba(147, 161, 176, 1);
         --m3--ref--charcoal--primary0: rgba(0, 0, 0, 1);
+
+        /*ref blue*/
+        --m3--ref--blue--primary100: rgba(255, 255, 255, 1);
+        --m3--ref--blue--primary99: rgba(255, 251, 254, 1);
+        --m3--ref--blue--primary95: rgba(246, 237, 255, 1);
+        --m3--ref--blue--primary90: rgba(234, 221, 255, 1);
+        --m3--ref--blue--primary80: rgba(208, 188, 255, 1);
+        --m3--ref--blue--primary70: rgba(182, 157, 248, 1);
+        --m3--ref--blue--primary60: rgba(154, 130, 219, 1);
+        --m3--ref--blue--primary50: rgba(127, 103, 190, 1);
+        --m3--ref--blue--primary40: rgba(103, 80, 164, 1);
+        --m3--ref--blue--primary30: rgba(79, 55, 139, 1);
+        --m3--ref--blue--primary20: rgba(56, 30, 114, 1);
+        --m3--ref--blue--primary10: rgba(33, 0, 93, 1);
+        --m3--ref--blue--primary0: rgba(0, 0, 0, 1);
     }
 `;

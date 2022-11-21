@@ -20,7 +20,7 @@ const Root = ({ Component, pageProps }) => {
 }
 
 const _App = (props) => {
-    return(<ThemeModeProvider init={{color: "lavender"}}>
+    return(<ThemeModeProvider init={{color: "blue"}}>
         <NotificationProvider>
         <Root {...props}/>
         </NotificationProvider>

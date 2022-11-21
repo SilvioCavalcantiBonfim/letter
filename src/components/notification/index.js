@@ -1,27 +1,36 @@
 import react from "react";
-import { IconWarning } from "../letterBox";
+import { IconClose, IconSuccess, IconWarning } from "../../icons";
 import { NotificationContext } from "./NotificationSystem";
 import { StyledConteinerNotification, StyledNotification } from "./style";
 
 const Notification = (props) => {
     const contextNot = react.useContext(NotificationContext);
+    const [destroy, setDestroy] = react.useState(false);
 
     react.useEffect(() => {
-        const intervalDestroy = setInterval(() => {
-            HandleNotification();
-        }, 30000);
+        const intervalDestroyAfterTime = setInterval(() => {
+            setDestroy(true);
+        }, 29500);
 
-        return () => clearInterval(intervalDestroy);
+        return () => clearInterval(intervalDestroyAfterTime);
     }, []);
 
+    react.useEffect(() => {
+        const intervalDestroy = destroy && setInterval(() => {
+            contextNot.remove(props.id);
+        }, 500);
+        return () => destroy && clearInterval(intervalDestroy);
+    }, [destroy]);
+
     const HandleNotification = () => {
-        contextNot.remove(props.id);
+        setDestroy(true);
     }
 
-    return (<StyledNotification type={props.type}>
-        <div className='NotificationIcon'>{[<IconWarning />,<IconSuccess/>][props.type]}</div>
+    return (<StyledNotification {...{type:props.type, destroy: destroy}}>
+        <div className='NotificationIcon'>{[<IconWarning />, <IconSuccess />][props.type]}</div>
         <div className='NotificationText'>{props.text}</div>
         <button className='closedButtonNotification' onClick={HandleNotification}><IconClose /></button>
+        <div className="barTime"/>
     </StyledNotification>);
 }
 
@@ -38,17 +47,3 @@ const NotificationControl = () => {
 }
 
 export default NotificationControl;
-
-const IconClose = () => {
-    return (<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="currentColor" />
-    </svg>
-    );
-}
-
-const IconSuccess = () => {
-    return (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" d="M9.00016 16.17L4.83016 12L3.41016 13.41L9.00016 19L21.0002 7L19.5902 5.59L9.00016 16.17Z"/>
-    </svg>
-    );
-}
