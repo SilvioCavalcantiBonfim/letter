@@ -2,33 +2,29 @@ import styled from "styled-components";
 
 export const StyledColorSelect = styled.div`
     display: flex;
-    font-size: 0px;
-    width: 200px;
+    font-size: var(--m3--title--small);
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .iconButtonSetting{
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-bottom: 4px;
+        svg{
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
+            animation: ${({ display }) => (display === 'block') ? 'rotateGear 5s linear infinite' : 'none'};
+        }
+    }
     .conteinerSetting{
         position: relative;
         display: inline-block;
-        left: -100px;
-        
-    }
-    .iconButtonSetting{
-        background-color: transparent;
-        padding: 0;
-        background-color: var(--m3--sys--light--primary);
-        width: 44px;
-        height: 44px;
-        margin-bottom: 4px;
-        border-radius: 50%;
-        cursor: pointer;
-        svg{
-            transition: transform .3s;
-            color: white;
-            border-radius: 50%;
-            padding: 9px;
-            animation: ${({ display }) => (display === 'block')? 'rotateGear 5s linear infinite': 'none' };
-        }
+        left: -265px;
     }
     @keyframes rotateGear {
         0% {transform: rotate(0deg)}
@@ -38,110 +34,83 @@ export const StyledColorSelect = styled.div`
     .MenuColor{
         display: ${({ display }) => display};
         position: absolute;
+        box-sizing: border-box;
         z-index: 1;
-        width: 200px;
-        height: max-content;
+        width: 300px;
+        padding: 10px 20px;
         opacity: 1;
         animation: showMenuColor .3s linear;
-        background-color: var(--m3--surfaces--light--surface2);
-        box-shadow: var(--m3---elevation--light--2);
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
+        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
+        box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
         border-radius: 4px;
-        color: var(--m3--sys--light--primary);
-        .selectColor{
-            width: auto;
+        .selectColorConteinerLinks{
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: space-evenly;
-            svg{
-                width: auto;
-            }
-        }
-        .linkMenu{
-            width: auto;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            a{
-                padding: 5px;
+            .LinkIcon{
+                color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+                box-sizing: border-box;
+                padding: 9px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 border-radius: 50%;
                 cursor: pointer;
                 &:hover{
-                    background-color: var(--m3--state-layers--light--primary--opacity-012);
-                    color: var(--m3--ref--${({theme}) => theme.color}--primary60);
-                }
-                svg{
-                    width: 24px;
+                    background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-012);
                 }
             }
         }
-        
+        .selectColorConteiner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 44px;
+            box-sizing: border-box;
+            padding: 0px 4px;
+            .title{
+                flex: 1;
+                font-size: var(--m3--title--medium);
+                text-align: center;
+            }
+            .selectColorTitle{
+                flex: 1;
+                box-sizing: border-box;
+                padding: 0px 4px;
+                font-size:  var(--m3--title--small);
+                color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface);
+            }
+            .ColorConteiner{
+                flex: 1.5;
+                display: flex;
+                justify-content: space-between;
+            }
+            .selectColorButton{
+                color: inherit;
+            }
+        } 
     }    
-
     @keyframes showMenuColor {
         0% {opacity: 0}
         100% {opacity: 1}
     }
-    .Color1{
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: solid 2px var(--m3--ref--gold--primary10);
-        background-color: var(--m3--ref--gold--primary40);
-        box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
-        transition: background-color .1s;
-        &:hover{
-            background-color: var(--m3--ref--gold--primary60);
-        }
-    }
-    .Color2{
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: solid 2px var(--m3--ref--lavender--primary90);
-        background-color: var(--m3--ref--lavender--primary40);
-        box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
-        &:hover{
-            background-color: var(--m3--ref--lavender--primary60);
-        }
-    }
-    .Color3{
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: solid 2px var(--m3--ref--${({ theme }) => theme.color}--primary10);
-        background-color: var(--m3--ref--green--primary40);
-        box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
-        &:hover{
-            background-color: var(--m3--ref--green--primary60);
-        }
-    }
-    .Color4{
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: solid 2px var(--m3--ref--${({ theme }) => theme.color}--primary10);
-        background-color: var(--m3--ref--pink--primary40);
-        box-shadow: ${({ theme }) => `var(--m3---elevation--light--2)`};
-        &:hover{
-            background-color: var(--m3--ref--pink--primary60);
-        }
-    }
-    .Color5{
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: solid 2px var(--m3--ref--blue--primary90);
-        background-color: var(--m3--ref--blue--primary40);
-        box-shadow: var(--m3---elevation--light--2);
-        &:hover{
-            background-color: var(--m3--ref--blue--primary60);
-        }
+`;
+
+export const StyledColor = styled.div`
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid 2px var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface-variant);
+    background-color: ${({color}) => `var(--m3--ref--${color}--primary40)`};
+    box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
+    transition: background-color .1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        background-color: ${({color}) => `var(--m3--ref--${color}--primary60)`};
     }
 `;

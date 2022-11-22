@@ -11,7 +11,7 @@ const Theme = [{type: 'dark'}, {type: 'light'}];
 const Root = ({ Component, pageProps }) => {
 
     const ModeContext = react.useContext(ThemeModeContext);
-    return (<ThemeProvider theme={{color: ModeContext.color}}>
+    return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
             <M3Variable/>
             <CSSReset />
             <RegisterLetter/>
@@ -20,7 +20,7 @@ const Root = ({ Component, pageProps }) => {
 }
 
 const _App = (props) => {
-    return(<ThemeModeProvider init={{color: "blue"}}>
+    return(<ThemeModeProvider init={{color: "blue", fontSize: 57, theme: 0}}>
         <NotificationProvider>
         <Root {...props}/>
         </NotificationProvider>

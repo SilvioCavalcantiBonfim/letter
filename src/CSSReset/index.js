@@ -5,9 +5,9 @@ export const CSSReset = createGlobalStyle`
         isolation: isolate;
     }
     html {
-        font-size: 57px;
-        line-height: 64 / 57;
+        font-size: ${({theme}) => `${theme.fontSize}px`};
         font-family: 'Roboto', sans-serif;
+        font-style: normal;
         background-color: var(--m3--sys--light--surface);
     }
     
@@ -31,6 +31,7 @@ export const CSSReset = createGlobalStyle`
         -webkit-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        transition: background-color .1s linear;
     }
     *:focus{
         outline: none;

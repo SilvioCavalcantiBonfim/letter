@@ -1,16 +1,22 @@
 import react from "react";
 
-
-export const ThemeModeContext = react.createContext({color: "", setThemeMode: () => alert("error")});
+// 1 - light
+// 0 - dark
+export const ThemeModeContext = react.createContext({});
 
 const ThemeModeProvider = (props) => {
     const [ThemeProps, SetThemeProps] = react.useState(props.init);
 
     const HandleColor = (c) => {
-        SetThemeProps({color: c});
+        SetThemeProps( v => {return {...v,color: c}});
     }
-
-    return(<ThemeModeContext.Provider value={{color:ThemeProps.color, setColor: HandleColor}}>
+    const HandleFontSize = (px) => {
+        SetThemeProps( v => {return {...v,fontSize: px}});
+    }
+    const ToogleTheme = () => {
+        SetThemeProps( v => {return {...v,theme: 1-v.theme}});
+    }
+    return(<ThemeModeContext.Provider value={{...ThemeProps, setColor: HandleColor, setFontSize: HandleFontSize, ToogleTheme: ToogleTheme}}>
         {props.children}
     </ThemeModeContext.Provider>);
 }
