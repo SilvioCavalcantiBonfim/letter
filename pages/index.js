@@ -1,11 +1,7 @@
 import Head from "next/head";
-import react from "react";
 import styled from "styled-components";
 import Card from "../src/components/card";
-import GenericalCard from "../src/components/genericalCard";
 import Header from "../src/components/header";
-import { NotificationContext } from "../src/components/notification/NotificationSystem";
-import { IconButton, IconLetter, IconLetterOpen, IconThumbDownLine, IconThumbUpLine, IconWarning } from "../src/icons";
 
 const StyledBody = styled.div`
     width: 100%;

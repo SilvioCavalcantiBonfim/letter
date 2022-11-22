@@ -6,8 +6,8 @@ export const StyledNotification = styled.div`
     padding: 0px;
     border-radius: 4px;
     display: flex;
-    background-color: var(${({type}) => ['--m3--sys--light--error-container','--m3--sys--light--success-container'][type]});
-    color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
+    background-color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error-container)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success-container)`][type]};
+    color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
     box-shadow: var(--m3---elevation--light--3);
     margin: 4px 0px;
     animation: ${({destroy}) => destroy? `destroyAnimation .65s linear`: `none`};
@@ -24,11 +24,10 @@ export const StyledNotification = styled.div`
         left: 48px;
         bottom: 0px;
         border-bottom-right-radius: 4px;
-        background-color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
+        background-color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
         height: 3px;
         animation: TimerExit 29.5s linear;
     }
-
     @keyframes TimerExit {
         0% {width: calc(100% - 48px);border-bottom-right-radius: 4px}
         1% {border-bottom-right-radius: 0px}
@@ -41,8 +40,8 @@ export const StyledNotification = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
-        color: var(${({type}) => ['--m3--sys--light--error-container','--m3--sys--light--success-container'][type]});
+        background-color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
+        color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error-container)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success-container)`][type]};
         svg{
             width: 24px;
             height: 24px;
@@ -64,12 +63,12 @@ export const StyledNotification = styled.div`
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        color: var(${({type}) => ['--m3--sys--light--error','--m3--sys--light--success'][type]});
+        color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
         background-color: transparent;
         cursor: pointer;
         margin: 9px;
         &:hover{
-            background-color: var(--m3--state-layers--light--primary--opacity-012);
+            background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-012);
         }
     }
 `;

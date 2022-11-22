@@ -18,7 +18,7 @@ export const StyledActions = styled.div`
             animation: buttonAnimation .9s linear;
         }
         &:hover{
-            box-shadow: var(--m3---elevation--light--4);
+            box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--4);
         }
         @keyframes buttonAnimation {
             0% {transform: rotate(0deg);}
@@ -29,18 +29,18 @@ export const StyledActions = styled.div`
     }
 
     .button1{
-        color: var(--m3--sys--light--primary);
+        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
         margin-right: 8px;
         &:hover{
-            background-color: var(--m3--sys--light--error-container);
-            color: var(--m3--sys--light--error);
+            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error-container);
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error);
         }
     }
     .button2{
-        color: var(--m3--sys--light--primary);  
+        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);  
         &:hover{
-            background-color: var(--m3--sys--light--success-container);
-            color: var(--m3--sys--light--success);
+            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--success-container);
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--success);
         }
     }
 `;
@@ -60,7 +60,6 @@ export const StyledConteiner = styled.div`
     }
     .focus{
         position: fixed;
-        background-color: var(--m3--sys--light--surface005);
         width: 100%;
         height: 100%;
         backdrop-filter: blur(5px);
@@ -82,7 +81,7 @@ export const StyledConteiner = styled.div`
     }
     .out{
         position: fixed;
-        background-color: var(--m3--sys--light--surface005);
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface005);
         width: 100%;
         height: 100%;
         backdrop-filter: blur(0px);
@@ -120,8 +119,8 @@ export const StyledOptions = styled.div`
     margin-top: 4px;
     left: -70px;
     .Options{
-        box-shadow: var(--m3---elevation--light--2);
-        background-color: var(--m3--sys--light--surface);
+        box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
         border-radius: 4px;
         .WarningButton{
             box-sizing: border-box;
@@ -131,11 +130,11 @@ export const StyledOptions = styled.div`
             display: flex;
             align-items: center; 
             justify-content: space-evenly;
-            color: var(--m3--sys--light--error);
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error);
             font-size: var(--m3--body--medium);   
         }
         &:hover{
-            background-color: var(--m3--sys--light--error-container);
+            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error-container);
         }
     }
 `;

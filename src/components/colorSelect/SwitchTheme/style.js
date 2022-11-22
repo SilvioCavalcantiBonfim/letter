@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledSwitchTheme = styled.div`
+    width: 24px;
+    height: 24px;
     .moon-icon-light {
         stroke-dasharray: 0px 1px;
         opacity: 0;

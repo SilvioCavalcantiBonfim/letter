@@ -27,12 +27,18 @@ export const M3Variable = createGlobalStyle`
         --m3--sys--light--on-primary: var(--m3--ref--${({ theme }) => theme.color}--primary100);
         --m3--sys--light--primary-container: var(--m3--ref--${({ theme }) => theme.color}--primary90);
         --m3--sys--light--on-primary-container: var(--m3--ref--${({ theme }) => theme.color}--primary10);
-        --m3--sys--light--surface: var(--m3--ref--${({ theme }) => theme.color}--neutral99);
-        --m3--sys--light--on-surface: var(--m3--ref--${({ theme }) => theme.color}--neutral10);
-        --m3--sys--light--surface-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant90);
-        --m3--sys--light--on-surface-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant30);
-        --m3--sys--light--outline: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant50);
-        --m3--sys--light--outline-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant80);
+
+        --m3--sys--light--error: var(--m3--ref--error40);
+        --m3--sys--light--error-container: var(--m3--ref--error90);
+        --m3--sys--light--success: var(--m3--ref--success40);
+        --m3--sys--light--success-container: var(--m3--ref--success90);
+
+        --m3--sys--light--surface: var(--m3--ref--neutral99);
+        --m3--sys--light--on-surface: var(--m3--ref--neutral10);
+        --m3--sys--light--surface-variant: var(--m3--ref--neutral-variant90);
+        --m3--sys--light--on-surface-variant: var(--m3--ref--neutral-variant30);
+        --m3--sys--light--outline: var(--m3--ref--neutral-variant50);
+        --m3--sys--light--outline-variant: var(--m3--ref--neutral-variant80);
 
         --m3--state-layers--light--primary--opacity-008: rgba(103, 80, 164, 0.07999999821186066);
         --m3--state-layers--light--primary--opacity-012: rgba(103, 80, 164, 0.11999999731779099);
@@ -43,14 +49,19 @@ export const M3Variable = createGlobalStyle`
         --m3--sys--dark--on-primary: var(--m3--ref--${({ theme }) => theme.color}--primary20);
         --m3--sys--dark--primary-container: var(--m3--ref--${({ theme }) => theme.color}--primary30);
         --m3--sys--dark--on-primary-container: var(--m3--ref--${({ theme }) => theme.color}--primary90);
-        
-        --m3--sys--dark--surface: var(--m3--ref--${({ theme }) => theme.color}--neutral10);
-        --m3--sys--dark--on-surface: var(--m3--ref--${({ theme }) => theme.color}--neutral90);
-        --m3--sys--dark--surface-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant30);
-        --m3--sys--dark--on-surface-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant80);
 
-        --m3--sys--dark--outline: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant60);
-        --m3--sys--dark--outline-variant: var(--m3--ref--${({ theme }) => theme.color}--neutral-variant30);
+        --m3--sys--dark--error: var(--m3--ref--error80);
+        --m3--sys--dark--error-container: var(--m3--ref--error30);
+        --m3--sys--dark--success: var(--m3--ref--success80);
+        --m3--sys--dark--success-container: var(--m3--ref--success30);
+        
+        --m3--sys--dark--surface: var(--m3--ref--neutral10);
+        --m3--sys--dark--on-surface: var(--m3--ref--neutral90);
+        --m3--sys--dark--surface-variant: var(--m3--ref--neutral-variant30);
+        --m3--sys--dark--on-surface-variant: var(--m3--ref--neutral-variant80);
+
+        --m3--sys--dark--outline: var(--m3--ref--neutral-variant60);
+        --m3--sys--dark--outline-variant: var(--m3--ref--neutral-variant30);
 
         --m3--state-layers--dark--primary--opacity-008: rgba(208, 188, 255, 0.07999999821186066);
         --m3--state-layers--dark--primary--opacity-012: rgba(208, 188, 255, 0.11999999731779099);
@@ -58,7 +69,7 @@ export const M3Variable = createGlobalStyle`
 
         /*  */
 
-        --m3--sys--light--outline: rgba(121, 116, 126, 1);
+        /* --m3--sys--light--outline: rgba(121, 116, 126, 1);
         --m3--sys--light--outline-variant: rgba(202, 196, 208, 1);
         --m3--sys--light--inverse-on-surface: rgba(244, 239, 244, 1);
         --m3--sys--light--on-surface: rgba(28, 27, 31, 1);
@@ -71,13 +82,7 @@ export const M3Variable = createGlobalStyle`
         --m3--sys--light--success-container: rgba(227, 251, 238, 1);
         --m3--sys--light--color--primary: rgba(255, 255, 255, 1);
         --m3--sys--light--inverse-surface: rgba(49, 48, 51, 1);
-        --m3--sys--light--surface05: rgba(255, 251, 254, 0.5);
-
-        --m3--surfaces--light--surface1: rgba(255, 251, 254, 1);
-        --m3--surfaces--light--surface2: rgba(255, 251, 254, 1);
-        --m3--surfaces--light--surface3: rgba(255, 251, 254, 1);
-        --m3--surfaces--light--surface4: rgba(255, 251, 254, 1);
-        --m3--surfaces--light--surface5: rgba(255, 251, 254, 1);
+        --m3--sys--light--surface05: rgba(255, 251, 254, 0.5); */
         /* base size: m3--display--large (57px) */
         --m3--display--large: 1rem;
         --m3--display--medium: 0.79rem;
@@ -166,92 +171,63 @@ export const M3Variable = createGlobalStyle`
         --m3--ref--blue--primary98: #f8f9ff;
         --m3--ref--blue--primary99: #fdfcff;
         --m3--ref--blue--primary100: #ffffff;
-        /* secondary */
-        --m3--ref--blue--secondary0: #000000;
-        --m3--ref--blue--secondary10: #0f1c2b;
-        --m3--ref--blue--secondary20: #253140;
-        --m3--ref--blue--secondary25: #303c4c;
-        --m3--ref--blue--secondary30: #3b4858;
-        --m3--ref--blue--secondary35: #475364;
-        --m3--ref--blue--secondary40: #535f70;
-        --m3--ref--blue--secondary50: #6b7889;
-        --m3--ref--blue--secondary60: #8592a4;
-        --m3--ref--blue--secondary70: #9facbf;
-        --m3--ref--blue--secondary80: #bac8db;
-        --m3--ref--blue--secondary90: #d6e3f7;
-        --m3--ref--blue--secondary95: #e9f1ff;
-        --m3--ref--blue--secondary98: #f8f9ff;
-        --m3--ref--blue--secondary99: #fdfcff;
-        --m3--ref--blue--secondary100: #ffffff;
-        /* tertiary */
-        --m3--ref--blue--tertiary0: #000000;
-        --m3--ref--blue--tertiary10: #251432;
-        --m3--ref--blue--tertiary20: #3b2948;
-        --m3--ref--blue--tertiary25: #463453;
-        --m3--ref--blue--tertiary30: #523f5f;
-        --m3--ref--blue--tertiary35: #5e4b6c;
-        --m3--ref--blue--tertiary40: #6b5778;
-        --m3--ref--blue--tertiary50: #846f92;
-        --m3--ref--blue--tertiary60: #9f89ad;
-        --m3--ref--blue--tertiary70: #baa3c8;
-        --m3--ref--blue--tertiary80: #d6bee5;
-        --m3--ref--blue--tertiary90: #f2daff;
-        --m3--ref--blue--tertiary95: #fbecff;
-        --m3--ref--blue--tertiary98: #fff7fd;
-        --m3--ref--blue--tertiary99: #fffbff;
-        --m3--ref--blue--tertiary100: #ffffff;
         /* neutral */
-        --m3--ref--blue--neutral0: #000000;
-        --m3--ref--blue--neutral10: #1a1c1e;
-        --m3--ref--blue--neutral20: #2f3033;
-        --m3--ref--blue--neutral25: #3a3b3e;
-        --m3--ref--blue--neutral30: #45474a;
-        --m3--ref--blue--neutral35: #515255;
-        --m3--ref--blue--neutral40: #5d5e61;
-        --m3--ref--blue--neutral50: #76777a;
-        --m3--ref--blue--neutral60: #909094;
-        --m3--ref--blue--neutral70: #ababae;
-        --m3--ref--blue--neutral80: #c6c6ca;
-        --m3--ref--blue--neutral90: #e2e2e6;
-        --m3--ref--blue--neutral95: #f1f0f4;
-        --m3--ref--blue--neutral98: #faf9fc;
-        --m3--ref--blue--neutral99: #fdfcff;
-        --m3--ref--blue--neutral100: #ffffff;
+        --m3--ref--neutral0: #000000;
+        --m3--ref--neutral10: #1a1c1e;
+        --m3--ref--neutral20: #2f3033;
+        --m3--ref--neutral25: #3a3b3e;
+        --m3--ref--neutral30: #45474a;
+        --m3--ref--neutral35: #515255;
+        --m3--ref--neutral40: #5d5e61;
+        --m3--ref--neutral50: #76777a;
+        --m3--ref--neutral60: #909094;
+        --m3--ref--neutral70: #ababae;
+        --m3--ref--neutral80: #c6c6ca;
+        --m3--ref--neutral90: #e2e2e6;
+        --m3--ref--neutral95: #f1f0f4;
+        --m3--ref--neutral98: #faf9fc;
+        --m3--ref--neutral99: #fdfcff;
+        --m3--ref--neutral100: #ffffff;
         /* neutral-variant */
-        --m3--ref--blue--neutral-variant0: #000000;
-        --m3--ref--blue--neutral-variant10: #171c22;
-        --m3--ref--blue--neutral-variant20: #2c3137;
-        --m3--ref--blue--neutral-variant25: #373c42;
-        --m3--ref--blue--neutral-variant30: #42474e;
-        --m3--ref--blue--neutral-variant35: #4e535a;
-        --m3--ref--blue--neutral-variant40: #5a5f66;
-        --m3--ref--blue--neutral-variant50: #73777f;
-        --m3--ref--blue--neutral-variant60: #8d9199;
-        --m3--ref--blue--neutral-variant70: #a7abb4;
-        --m3--ref--blue--neutral-variant80: #c3c7cf;
-        --m3--ref--blue--neutral-variant90: #dfe2eb;
-        --m3--ref--blue--neutral-variant95: #edf1f9;
-        --m3--ref--blue--neutral-variant98: #f8f9ff;
-        --m3--ref--blue--neutral-variant99: #fdfcff;
-        --m3--ref--blue--neutral-variant100: #ffffff;
+        --m3--ref--neutral-variant0: #000000;
+        --m3--ref--neutral-variant10: #171c22;
+        --m3--ref--neutral-variant20: #2c3137;
+        --m3--ref--neutral-variant25: #373c42;
+        --m3--ref--neutral-variant30: #42474e;
+        --m3--ref--neutral-variant35: #4e535a;
+        --m3--ref--neutral-variant40: #5a5f66;
+        --m3--ref--neutral-variant50: #73777f;
+        --m3--ref--neutral-variant60: #8d9199;
+        --m3--ref--neutral-variant70: #a7abb4;
+        --m3--ref--neutral-variant80: #c3c7cf;
+        --m3--ref--neutral-variant90: #dfe2eb;
+        --m3--ref--neutral-variant95: #edf1f9;
+        --m3--ref--neutral-variant98: #f8f9ff;
+        --m3--ref--neutral-variant99: #fdfcff;
+        --m3--ref--neutral-variant100: #ffffff;
         /* error */
-        --m3--ref--blue--error0: #000000;
-        --m3--ref--blue--error10: #410002;
-        --m3--ref--blue--error20: #690005;
-        --m3--ref--blue--error25: #7e0007;
-        --m3--ref--blue--error30: #93000a;
-        --m3--ref--blue--error35: #a80710;
-        --m3--ref--blue--error40: #ba1a1a;
-        --m3--ref--blue--error50: #de3730;
-        --m3--ref--blue--error60: #ff5449;
-        --m3--ref--blue--error70: #ff897d;
-        --m3--ref--blue--error80: #ffb4ab;
-        --m3--ref--blue--error90: #ffdad6;
-        --m3--ref--blue--error95: #ffedea;
-        --m3--ref--blue--error98: #fff8f7;
-        --m3--ref--blue--error99: #fffbff;
-        --m3--ref--blue--error100: #ffffff;
+        --m3--ref--error0: #000000;
+        --m3--ref--error10: #410002;
+        --m3--ref--error20: #690005;
+        --m3--ref--error25: #7e0007;
+        --m3--ref--error30: #93000a;
+        --m3--ref--error35: #a80710;
+        --m3--ref--error40: #ba1a1a;
+        --m3--ref--error50: #de3730;
+        --m3--ref--error60: #ff5449;
+        --m3--ref--error70: #ff897d;
+        --m3--ref--error80: #ffb4ab;
+        --m3--ref--error90: #ffdad6;
+        --m3--ref--error95: #ffedea;
+        --m3--ref--error98: #fff8f7;
+        --m3--ref--error99: #fffbff;
+        --m3--ref--error100: #ffffff;
 
+        /* success */
+        --m3--ref--success30: #005307;
+        --m3--ref--success40: #006e0c;
+        --m3--ref--success80: #77dd6a;
+        --m3--ref--success90: #92fa83;
         /*ref green*/
         --m3--ref--green--primary0: #000000;
         --m3--ref--green--primary10: #002111;

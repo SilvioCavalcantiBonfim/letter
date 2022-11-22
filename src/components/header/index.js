@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import ColorSelect from "../colorSelect";
-import { StyledHeader } from "./style"
+import { StyledHeader } from "./style";
 
 const StyleConteiner = styled.div`
     position: fixed;
@@ -8,11 +8,8 @@ const StyleConteiner = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    backdrop-filter: ${({theme}) => theme.theme === 1 && 'brightness(75%)'}  blur(10px);
     z-index: -1;
-    svg{
-        width: 100%;
-        height: 100%;
-    }
 `;
 
 const Header = (props) => {
@@ -21,31 +18,11 @@ const Header = (props) => {
         <Logo/>
         <ColorSelect/>
     </StyledHeader>
-    <StyleConteiner>
+    <StyleConteiner/>
+    {/* <StyleConteiner>
         <Bg />
-    </StyleConteiner>
+    </StyleConteiner> */}
     </>);
-}
-
-const Bg = () => {
-    return (<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
-    <g mask="url(#SvgjsMask1002)" fill="none">
-        <rect width="1440" height="560" x="0" y="0" fill="url(#SvgjsLinearGradient1003)"></rect>
-        <path d="M1560 560L0 560 L0 352.28Q30.01 262.29, 120 292.3Q198.81 251.12, 240 329.93Q282.46 300.39, 312 342.86Q329.92 288.78, 384 306.7Q414.25 264.94, 456 295.19Q514.89 282.09, 528 340.98Q581.44 274.43, 648 327.87Q697.29 257.16, 768 306.45Q833.7 252.15, 888 317.86Q959.7 269.56, 1008 341.26Q1058.98 320.24, 1080 371.22Q1111.32 282.54, 1200 313.86Q1267.42 261.28, 1320 328.7Q1357.18 245.88, 1440 283.07Q1516.13 239.2, 1560 315.33z" fill="var(--m3--bg--cloud--level1)"></path>
-        <path d="M1464 560L0 560 L0 387.24Q72.19 339.43, 120 411.61Q172.76 392.37, 192 445.13Q225.46 358.59, 312 392.05Q328.22 336.27, 384 352.5Q433.86 330.36, 456 380.22Q526.81 331.03, 576 401.84Q611.07 316.91, 696 351.98Q747.54 331.52, 768 383.06Q821.55 364.61, 840 418.16Q891.72 349.88, 960 401.6Q977.54 347.14, 1032 364.68Q1104.55 317.23, 1152 389.78Q1221.23 339.01, 1272 408.24Q1305.05 321.29, 1392 354.34Q1444.56 334.89, 1464 387.45z" fill="var(--m3--bg--cloud--level2)"></path>
-        <path d="M1512 560L0 560 L0 455.91Q19.54 403.45, 72 422.98Q139.58 370.56, 192 438.14Q258.03 432.17, 264 498.21Q278.67 440.88, 336 455.54Q390.18 389.72, 456 443.89Q544.08 411.97, 576 500.04Q578.39 430.44, 648 432.83Q709.49 374.31, 768 435.8Q841.56 437.37, 840 510.93Q886.51 437.44, 960 483.95Q1003.6 407.54, 1080 451.14Q1172.23 423.37, 1200 515.6Q1210.16 453.76, 1272 463.93Q1315.12 387.05, 1392 430.16Q1458.23 376.39, 1512 442.62z" fill="var(--m3--bg--cloud--level3)"></path>
-        <path d="M1512 560L0 560 L0 520.36Q29 477.36, 72 506.36Q123.32 485.68, 144 537.01Q195.9 468.91, 264 520.81Q339.19 476, 384 551.19Q460.47 507.66, 504 584.14Q510.98 519.12, 576 526.1Q601.47 479.57, 648 505.04Q726.85 463.89, 768 542.74Q815.72 518.46, 840 566.18Q879.24 485.41, 960 524.65Q1051.66 496.31, 1080 587.97Q1129.41 517.38, 1200 566.79Q1201.79 496.58, 1272 498.36Q1338.48 444.84, 1392 511.32Q1483.35 482.67, 1512 574.02z" fill="var(--m3--bg--cloud--level4)"></path>
-    </g>
-    <defs>
-        <mask id="SvgjsMask1002">
-            <rect width="1440" height="560" fill="#ffffff"></rect>
-        </mask>
-        <linearGradient x1="15.28%" y1="-39.29%" x2="84.72%" y2="139.29%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient1003">
-            <stop stopColor="var(--m3--bg--gradient--1)" offset="0"></stop>
-            <stop stopColor="var(--m3--bg--gradient--2)" offset="1"></stop>
-        </linearGradient>
-    </defs>
-</svg>);
 }
 
 const Logo = () => {

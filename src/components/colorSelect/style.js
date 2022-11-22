@@ -15,9 +15,8 @@ export const StyledColorSelect = styled.div`
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        margin-bottom: 4px;
         svg{
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-primary);
             animation: ${({ display }) => (display === 'block') ? 'rotateGear 5s linear infinite' : 'none'};
         }
     }
@@ -33,11 +32,12 @@ export const StyledColorSelect = styled.div`
 
     .MenuColor{
         display: ${({ display }) => display};
+        margin-top: 4px;
         position: absolute;
         box-sizing: border-box;
         z-index: 1;
         width: 300px;
-        padding: 10px 20px;
+        padding: 0px 20px;
         opacity: 1;
         animation: showMenuColor .3s linear;
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
@@ -67,7 +67,7 @@ export const StyledColorSelect = styled.div`
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 44px;
+            height: 55px;
             box-sizing: border-box;
             padding: 0px 4px;
             .title{
@@ -88,7 +88,17 @@ export const StyledColorSelect = styled.div`
                 justify-content: space-between;
             }
             .selectColorButton{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 color: inherit;
+                &:hover{
+                    background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-008);
+                }
             }
         } 
     }    
@@ -104,13 +114,13 @@ export const StyledColor = styled.div`
     border-radius: 50%;
     cursor: pointer;
     border: solid 2px var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface-variant);
-    background-color: ${({color}) => `var(--m3--ref--${color}--primary40)`};
+    background-color: ${({color,theme}) => `var(--m3--ref--${color}--primary${[4,6][theme.theme]}0)`};
     box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
     transition: background-color .1s;
     display: flex;
     align-items: center;
     justify-content: center;
     &:hover{
-        background-color: ${({color}) => `var(--m3--ref--${color}--primary60)`};
+        background-color: ${({color,theme}) => `var(--m3--ref--${color}--primary${[6,4][theme.theme]}0)`};
     }
 `;
