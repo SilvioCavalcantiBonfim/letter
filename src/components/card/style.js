@@ -18,7 +18,7 @@ export const StyledActions = styled.div`
             animation: buttonAnimation .9s linear;
         }
         &:hover{
-            box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--4);
+            box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--4);
         }
         @keyframes buttonAnimation {
             0% {transform: rotate(0deg);}
@@ -29,18 +29,18 @@ export const StyledActions = styled.div`
     }
 
     .button1{
-        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
         margin-right: 8px;
         &:hover{
-            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error-container);
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error);
+            background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--error-container);
+            color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--error);
         }
     }
     .button2{
-        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);  
+        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);  
         &:hover{
-            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--success-container);
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--success);
+            background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--success-container);
+            color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--success);
         }
     }
 `;
@@ -81,7 +81,7 @@ export const StyledConteiner = styled.div`
     }
     .out{
         position: fixed;
-        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface005);
+        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface005);
         width: 100%;
         height: 100%;
         backdrop-filter: blur(0px);
@@ -114,17 +114,28 @@ export const StyledTextContent = styled.div`
 
 export const StyledOptions = styled.div`
     position: absolute;
-    display: ${({ display }) => ["none", "inline-block", "inline-block"][display]};
-    opacity: ${({ display }) => Number(display !== 2)};
-    /* animation: showMenuColor .3s linear; */
-    transition: opacity var(--animation--duration) linear;
+    
     top: 44px;
     margin-top: 4px;
     left: -70px;
+    
     .Options{
-        box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
-        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
+        display: ${({ StateOptionMenu }) => ["none", "inline-block", "inline-block"][StateOptionMenu]};
+        opacity: ${({ StateOptionMenu }) => Number(StateOptionMenu !== 2)};
+        box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--2);
+        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
         border-radius: 4px;
+        animation: none;
+        &.an1{
+            -webkit-animation: swing-in-top-bck var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            animation: swing-in-top-bck  var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+        }   
+
+        &.an2{
+            -webkit-animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+            animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+        }
+
         .WarningButton{
             box-sizing: border-box;
             cursor: pointer;
@@ -133,11 +144,11 @@ export const StyledOptions = styled.div`
             display: flex;
             align-items: center; 
             justify-content: space-evenly;
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error);
+            color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--error);
             font-size: var(--m3--body--medium);   
         }
         &:hover{
-            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--error-container);
+            background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--error-container);
         }
     }
 `;

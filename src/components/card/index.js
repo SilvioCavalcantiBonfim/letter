@@ -10,10 +10,9 @@ const Card = (props) => {
 
     // estados
     const [Hover, setHover] = react.useState(0);
-    const [OptionsMenu, setOptionsMenu] = react.useState(0);
     const [focus, setFocus] = react.useState(0);
     const [auxFocus, setAuxFocus] = react.useState(0);
-
+    
     // Referencias
     const refOptions = react.useRef(null);
     const refGlobal = react.useRef(null);
@@ -28,11 +27,9 @@ const Card = (props) => {
         }, 300);
         return () => auxFocus && clearInterval(timeOver);
     }, [auxFocus]);
-
+    
     react.useEffect(() => {
         window.addEventListener("click", (e) => {
-            if (!refOptions.current.contains(e.target))
-                setOptionsMenu(0);
             if (!refGlobal.current.contains(e.target)) {
                 if (refAnimation.current.className === 'focus') {
                     refAnimation.current.classList.remove('focus');
@@ -42,15 +39,26 @@ const Card = (props) => {
             }
         })
     }, []);
-
+    
+    
+    
+    // Option menu control
+    const [StateOptionMenu, setStateOptionMenu] = react.useState(0);
+    
+    react.useEffect(() => {
+        window.addEventListener("click", (e) => {
+            if (!refOptions.current.contains(e.target))
+                setStateOptionMenu(v => (v === 1)?2:v);
+        })
+    }, []);
 
     react.useEffect(() => {
-        const Interval = OptionsMenu === 2 && setInterval(() => {
-            setOptionsMenu(0);
-        }, 300);
-        return () => OptionsMenu === 2 && clearInterval(Interval);
-    }, [OptionsMenu]);
-
+        const overStateOptionMenu = StateOptionMenu === 2 && setInterval(() => {
+            setStateOptionMenu(0);
+        }, 1000);
+        return () => StateOptionMenu === 2 && clearInterval(overStateOptionMenu);
+    }, [StateOptionMenu]);
+    // 
     return (<StyledConteiner
         onMouseOver={() => setHover(1)}
         onMouseOut={() => setHover(0)}
@@ -66,13 +74,17 @@ const Card = (props) => {
 
                         monogram: [<IconLetter />, <IconLetterOpen />][Hover],
                         iconRef: refOptions,
-                        iconButton: <div style={{ transform: `rotate(${[0, 90][OptionsMenu%1]}deg)`, transition: 'transform .1s linear' }}>
+                        iconButton: <div style={{ transform: `rotate(${[0, 90, 0][StateOptionMenu]}deg)`, transition: 'transform .1s linear' }}>
                             <IconButton />
                         </div>,
 
                         iconButtonComponent:
-                            <StyledOptions display={OptionsMenu} ref={refMenu}>
-                                <div className="Options">
+                            <StyledOptions StateOptionMenu={StateOptionMenu} ref={refMenu}>
+                                <div className={`Options${['', ' an1', ' an2'][StateOptionMenu]}`}>
+                                    <button className="WarningButton" onClick={() => { contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 1 }) }}>
+                                        <IconWarning />
+                                        <span>Denunciar</span>
+                                    </button>
                                     <button className="WarningButton" onClick={() => { contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 0 }) }}>
                                         <IconWarning />
                                         <span>Denunciar</span>
@@ -80,7 +92,7 @@ const Card = (props) => {
                                 </div>
                             </StyledOptions>,
 
-                        HandleHeaderButton: () => setOptionsMenu(v => 1 - v)
+                        HandleHeaderButton: () => setStateOptionMenu(v => (v < 2)?v + 1:v)
                     }}
 
                     media={{ backgroundColor: '#dadce0' }}

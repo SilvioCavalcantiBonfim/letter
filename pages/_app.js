@@ -10,9 +10,10 @@ import { Animations } from "../src/CSS/animations";
 const Theme = [{type: 'dark'}, {type: 'light'}];
 
 const Root = ({ Component, pageProps }) => {
-
+    const BackgroundsList = require.context('../src/background', true, /\.jpg$/).keys().map((key) => {console.log(require(`../src/background${key.substring(1)}`));return require(`../src/background${key.substring(1)}`).default.src});
+    console.log(BackgroundsList)
     const ModeContext = react.useContext(ThemeModeContext);
-    return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
+    return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme, backgrounds: BackgroundsList}}>
             <Variables/>
             <Animations/>
             <CSSReset />

@@ -82,6 +82,43 @@ export const Animations = createGlobalStyle`
             opacity: 0;
         }
     }
+    /* background */
+    /* @-webkit-keyframes kenburns-top {
+        0% {
+            -webkit-transform: scale(1) translateY(0);
+                    transform: scale(1) translateY(0);
+            -webkit-transform-origin: 50% 16%;
+                    transform-origin: 50% 16%;
+        }
+        100% {
+            -webkit-transform: scale(1.25) translateY(-15px);
+                    transform: scale(1.25) translateY(-15px);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+        }
+    }
+    @keyframes kenburns-top {
+        0% {
+            -webkit-transform: scale(1) translateY(0);
+                    transform: scale(1) translateY(0);
+            -webkit-transform-origin: 50% 16%;
+                    transform-origin: 50% 16%;
+        }
+        100% {
+            -webkit-transform: scale(1.25) translateY(-15px);
+                    transform: scale(1.25) translateY(-15px);
+                    backdrop-filter: blur(10px);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+        }
+    } */
 
+    @keyframes background-transition {
+        ${({ theme }) => {
+        return theme.backgrounds.map((e, i) => {
+            return `${i / (theme.backgrounds.length - 1) * 100}%{background: url(${e})} ${i / (theme.backgrounds.length - 1) * 100 + 90/(theme.backgrounds.length - 1)}%{background: url(${e})} `
+        })
+    }}
+    }
 
 `;

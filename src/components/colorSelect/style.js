@@ -24,6 +24,7 @@ export const StyledColorSelect = styled.div`
         position: relative;
         display: inline-block;
         left: -265px;
+        z-index: 2;
     }
 
     .MenuColor{
@@ -31,7 +32,6 @@ export const StyledColorSelect = styled.div`
         margin-top: 4px;
         position: absolute;
         box-sizing: border-box;
-        z-index: 1;
         width: 300px;
         padding: 0px 20px;
         opacity: ${({ display }) => Number(display !== 2)};
@@ -39,6 +39,7 @@ export const StyledColorSelect = styled.div`
         color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
         box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
         border-radius: 4px;
+
         &.an1{
             -webkit-animation: swing-in-top-bck var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 	        animation: swing-in-top-bck  var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
@@ -47,6 +48,7 @@ export const StyledColorSelect = styled.div`
             -webkit-animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 	        animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
         }
+        
         .selectColorConteinerLinks{
             height: 50px;
             display: flex;

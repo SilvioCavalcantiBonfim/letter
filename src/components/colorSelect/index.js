@@ -20,7 +20,7 @@ const ColorSelect = () => {
     react.useEffect(() => {
         const over = Display === 2 && setInterval(() => {
             setDisplay(0);
-        }, 500);
+        }, 300);
         return () => Display === 2 && clearInterval(over);
     }, [Display]);
 

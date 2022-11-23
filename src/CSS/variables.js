@@ -4,6 +4,7 @@ export const Variables = createGlobalStyle`
     :root{
         /*Global Control*/
         --animation--duration: .3s;
+        --animation--background--duration: ${({theme}) => theme.backgrounds.length*10}s;
 
         /* Effect styles */
         --m3---elevation--light--1:  0px 1px 3px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -37,6 +38,7 @@ export const Variables = createGlobalStyle`
         --m3--sys--light--success-container: var(--m3--ref--success90);
 
         --m3--sys--light--surface: var(--m3--ref--neutral99);
+        --m3--sys--light--surface001: rgba(253, 252, 255, 0.2);
         --m3--sys--light--on-surface: var(--m3--ref--neutral10);
         --m3--sys--light--surface-variant: var(--m3--ref--neutral-variant90);
         --m3--sys--light--on-surface-variant: var(--m3--ref--neutral-variant30);

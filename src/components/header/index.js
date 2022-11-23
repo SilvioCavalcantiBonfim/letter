@@ -6,22 +6,22 @@ const StyleConteiner = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: ${({theme}) => theme.theme === 1 && 'brightness(75%)'}  blur(10px);
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    animation: background-transition var(--animation--background--duration) linear alternate infinite;
+    filter: ${({ theme }) => `${theme.theme === 1 && 'grayscale(100%)'}`} ;
 `;
 
 const Header = (props) => {
-    return(<>
-    <StyledHeader>
-        <Logo/>
-        <ColorSelect/>
-    </StyledHeader>
-    <StyleConteiner/>
-    {/* <StyleConteiner>
-        <Bg />
-    </StyleConteiner> */}
+    return (<>
+        <StyledHeader>
+            <Logo />
+            <ColorSelect />
+        </StyledHeader>
+        <StyleConteiner/>
     </>);
 }
 

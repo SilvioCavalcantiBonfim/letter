@@ -10,10 +10,7 @@ export const CSSReset = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         font-style: normal;
         background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
-        background-image: url(${BACKGROUND1.src});
-        background-size: 100% 100%;
-        background-attachment: fixed;
-    }   
+    }
     hr{
         border-top: solid 1px var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--outline-variant);
     }
