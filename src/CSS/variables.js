@@ -1,7 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
-export const M3Variable = createGlobalStyle`
+export const Variables = createGlobalStyle`
     :root{
+        /*Global Control*/
+        --animation--duration: .3s;
+
         /* Effect styles */
         --m3---elevation--light--1:  0px 1px 3px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
         --m3---elevation--light--2:  0px 2px 6px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);

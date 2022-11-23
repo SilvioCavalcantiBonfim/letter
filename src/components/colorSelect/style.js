@@ -17,7 +17,7 @@ export const StyledColorSelect = styled.div`
         cursor: pointer;
         svg{
             color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-primary);
-            animation: ${({ display }) => (display === 'block') ? 'rotateGear 5s linear infinite' : 'none'};
+            animation: ${({ display }) => (display === 1) ? 'rotate360 5s linear infinite' : 'none'};
         }
     }
     .conteinerSetting{
@@ -25,25 +25,28 @@ export const StyledColorSelect = styled.div`
         display: inline-block;
         left: -265px;
     }
-    @keyframes rotateGear {
-        0% {transform: rotate(0deg)}
-        100% {transform: rotate(360deg)}
-    }
 
     .MenuColor{
-        display: ${({ display }) => display};
+        display: ${({ display }) => ['none','block', 'block'][display]};
         margin-top: 4px;
         position: absolute;
         box-sizing: border-box;
         z-index: 1;
         width: 300px;
         padding: 0px 20px;
-        opacity: 1;
-        animation: showMenuColor .3s linear;
+        opacity: ${({ display }) => Number(display !== 2)};
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
         color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
         box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
         border-radius: 4px;
+        &.an1{
+            -webkit-animation: swing-in-top-bck var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-bck  var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+        }
+        &.an2{
+            -webkit-animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	        animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+        }
         .selectColorConteinerLinks{
             height: 50px;
             display: flex;
@@ -101,10 +104,6 @@ export const StyledColorSelect = styled.div`
                 }
             }
         } 
-    }    
-    @keyframes showMenuColor {
-        0% {opacity: 0}
-        100% {opacity: 1}
     }
 `;
 

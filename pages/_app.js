@@ -3,8 +3,9 @@ import { ThemeProvider } from "styled-components";
 import NotificationProvider from "../src/components/notification/NotificationSystem";
 import RegisterLetter from "../src/components/registerLetter";
 import { CSSReset } from "../src/CSSReset";
-import { M3Variable } from "../src/M3Variable";
+import { Variables } from "../src/CSS/variables";
 import ThemeModeProvider, { ThemeModeContext } from "../src/ThemeControl";
+import { Animations } from "../src/CSS/animations";
 
 const Theme = [{type: 'dark'}, {type: 'light'}];
 
@@ -12,7 +13,8 @@ const Root = ({ Component, pageProps }) => {
 
     const ModeContext = react.useContext(ThemeModeContext);
     return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
-            <M3Variable/>
+            <Variables/>
+            <Animations/>
             <CSSReset />
             <RegisterLetter/>
             <Component {...pageProps} />

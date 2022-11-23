@@ -114,7 +114,10 @@ export const StyledTextContent = styled.div`
 
 export const StyledOptions = styled.div`
     position: absolute;
-    display: ${({ display }) => display};
+    display: ${({ display }) => ["none", "inline-block", "inline-block"][display]};
+    opacity: ${({ display }) => Number(display !== 2)};
+    /* animation: showMenuColor .3s linear; */
+    transition: opacity var(--animation--duration) linear;
     top: 44px;
     margin-top: 4px;
     left: -70px;

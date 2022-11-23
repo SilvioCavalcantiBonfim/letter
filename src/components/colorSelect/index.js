@@ -13,14 +13,21 @@ const ColorSelect = () => {
     react.useEffect(() => {
         window.addEventListener("click", (e) => {
             if (!box.current.contains(e.target))
-                setDisplay(0);
+                setDisplay(v => (v === 1)?2:v);
         })
     }, []);
 
-    return (<StyledColorSelect display={['none', 'block'][Display]} ref={box}>
-        <button className="iconButtonSetting" onClick={() => setDisplay(v => 1 - v)}><IconSetting /></button>
+    react.useEffect(() => {
+        const over = Display === 2 && setInterval(() => {
+            setDisplay(0);
+        }, 500);
+        return () => Display === 2 && clearInterval(over);
+    }, [Display]);
+
+    return (<StyledColorSelect display={Display} ref={box}>
+        <button className="iconButtonSetting" onClick={() => setDisplay(v => (v < 2)?v + 1:v)}><IconSetting /></button>
         <div className="conteinerSetting">
-            <div className="MenuColor">
+            <div className={`MenuColor${['', ' an1', ' an2'][Display]}`}>
                 <div className="selectColorConteiner">
                     <div className="title">Configurações</div>
                 </div>

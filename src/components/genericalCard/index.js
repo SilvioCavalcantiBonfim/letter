@@ -14,7 +14,7 @@ const GenericalCard = (props) => {
                     {props.header?.subtitle!== undefined && <div className="text-subhead"><span>{props.header?.subtitle}</span></div>}
                 </div>
                 <div className="icon-button">
-                    <button type="button" className="iconButton" onClick={props.header?.HandleHeaderButton}>{props.header?.iconButton || <IconDefault />}</button>
+                    <button type="button" className="iconButton" onClick={props.header?.HandleHeaderButton} ref={props.header?.iconRef}>{props.header?.iconButton || <IconDefault />}</button>
                     {props.header?.iconButtonComponent}
                 </div>
             </div>

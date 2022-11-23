@@ -18,7 +18,7 @@ const Card = (props) => {
     const refOptions = react.useRef(null);
     const refGlobal = react.useRef(null);
     const refAnimation = react.useRef(null);
-
+    const refMenu = react.useRef(null);
     //effect control out
     react.useEffect(() => {
         const timeOver = auxFocus && setInterval(() => {
@@ -43,10 +43,18 @@ const Card = (props) => {
         })
     }, []);
 
+
+    react.useEffect(() => {
+        const Interval = OptionsMenu === 2 && setInterval(() => {
+            setOptionsMenu(0);
+        }, 300);
+        return () => OptionsMenu === 2 && clearInterval(Interval);
+    }, [OptionsMenu]);
+
     return (<StyledConteiner
         onMouseOver={() => setHover(1)}
         onMouseOut={() => setHover(0)}
-        onClick={(e) => !refOptions.current.contains(e.target) && setFocus(1)}>
+        onClick={(e) => (!refOptions.current.contains(e.target) && !refMenu.current.contains(e.target)) && setFocus(1)}>
         <div className={['mini', 'focus'][focus]} ref={refAnimation}>
             <div ref={refGlobal}>
                 <GenericalCard
@@ -57,13 +65,13 @@ const Card = (props) => {
                         subtitle: props.pseudonym || 'pseudônimo',
 
                         monogram: [<IconLetter />, <IconLetterOpen />][Hover],
-
-                        iconButton: <div style={{ transform: `rotate(${[0, 90][OptionsMenu]}deg)`, transition: 'transform .1s linear' }} ref={refOptions}>
+                        iconRef: refOptions,
+                        iconButton: <div style={{ transform: `rotate(${[0, 90][OptionsMenu%1]}deg)`, transition: 'transform .1s linear' }}>
                             <IconButton />
                         </div>,
 
                         iconButtonComponent:
-                            <StyledOptions display={["none", "inline-block"][OptionsMenu]}>
+                            <StyledOptions display={OptionsMenu} ref={refMenu}>
                                 <div className="Options">
                                     <button className="WarningButton" onClick={() => { contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 0 }) }}>
                                         <IconWarning />
