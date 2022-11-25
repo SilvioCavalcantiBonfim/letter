@@ -10,8 +10,13 @@ import { Animations } from "../src/CSS/animations";
 const Theme = [{type: 'dark'}, {type: 'light'}];
 
 const Root = ({ Component, pageProps }) => {
-    const BackgroundsList = require.context('../src/background', true, /\.jpg$/).keys().map((key) => {console.log(require(`../src/background${key.substring(1)}`));return require(`../src/background${key.substring(1)}`).default.src});
-    console.log(BackgroundsList)
+    const BackgroundsList = require.context('../src/background', true, /\.jpg$/).keys().map((key) => require(`../src/background${key.substring(1)}`).default.src);
+
+    require.context('../src/background', true, /\.jpg$/).keys().map(async (key) => {
+        const a = require(`../src/background${key.substring(1)}`).default;
+        const blobImg = await fetch(a.src).then(async a => await a.blob());
+    });
+
     const ModeContext = react.useContext(ThemeModeContext);
     return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme, backgrounds: BackgroundsList}}>
             <Variables/>

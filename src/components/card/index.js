@@ -1,5 +1,5 @@
 import react from "react";
-import { IconButton, IconLetter, IconLetterOpen, IconThumbDownLine, IconThumbUpLine, IconWarning } from "../../icons";
+import { IconButton, IconLetter, IconLetterOpen, IconShare, IconThumbDownLine, IconThumbUpLine, IconWarning } from "../../icons";
 import GenericalCard from "../genericalCard";
 import { NotificationContext } from "../notification/NotificationSystem";
 import { StyledActions, StyledConteiner, StyledOptions, StyledTextContent } from "./style";
@@ -12,7 +12,7 @@ const Card = (props) => {
     const [Hover, setHover] = react.useState(0);
     const [focus, setFocus] = react.useState(0);
     const [auxFocus, setAuxFocus] = react.useState(0);
-    
+
     // Referencias
     const refOptions = react.useRef(null);
     const refGlobal = react.useRef(null);
@@ -27,7 +27,7 @@ const Card = (props) => {
         }, 300);
         return () => auxFocus && clearInterval(timeOver);
     }, [auxFocus]);
-    
+
     react.useEffect(() => {
         window.addEventListener("click", (e) => {
             if (!refGlobal.current.contains(e.target)) {
@@ -39,16 +39,16 @@ const Card = (props) => {
             }
         })
     }, []);
-    
-    
-    
+
+
+
     // Option menu control
     const [StateOptionMenu, setStateOptionMenu] = react.useState(0);
-    
+
     react.useEffect(() => {
         window.addEventListener("click", (e) => {
             if (!refOptions.current.contains(e.target))
-                setStateOptionMenu(v => (v === 1)?2:v);
+                setStateOptionMenu(v => (v === 1) ? 2 : v);
         })
     }, []);
 
@@ -81,18 +81,22 @@ const Card = (props) => {
                         iconButtonComponent:
                             <StyledOptions StateOptionMenu={StateOptionMenu} ref={refMenu}>
                                 <div className={`Options${['', ' an1', ' an2'][StateOptionMenu]}`}>
-                                    <button className="WarningButton" onClick={() => { contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 1 }) }}>
-                                        <IconWarning />
-                                        <span>Denunciar</span>
+                                    <button className="ShareButton" onClick={() => {
+                                        contextNot.add({ id: Date.now(), text: `Letter copiado.`, type: 1 })
+                                    }}>
+                                        <IconShare />
+                                        <span>Compartilhar</span>
                                     </button>
-                                    <button className="WarningButton" onClick={() => { contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 0 }) }}>
+                                    <button className="WarningButton" onClick={() => {
+                                        contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 0 })
+                                    }}>
                                         <IconWarning />
                                         <span>Denunciar</span>
                                     </button>
                                 </div>
                             </StyledOptions>,
 
-                        HandleHeaderButton: () => setStateOptionMenu(v => (v < 2)?v + 1:v)
+                        HandleHeaderButton: () => setStateOptionMenu(v => (v < 2) ? v + 1 : v)
                     }}
 
                     media={{ backgroundColor: '#dadce0' }}

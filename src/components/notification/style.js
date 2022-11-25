@@ -10,12 +10,20 @@ export const StyledNotification = styled.div`
     color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
     box-shadow: var(--m3---elevation--light--3);
     margin: 4px 0px;
-    animation: ${({destroy}) => destroy? `destroyAnimation .65s linear`: `none`};
+    animation: ${({destroy}) => destroy? `destroyAnimation var(--animation--duration) linear`: `none`};
     position: relative;
 
     @keyframes destroyAnimation {
-        0% {opacity: 1}
-        100% {opacity: 0}
+        0% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+        }
     }
 
     .barTime{
@@ -29,7 +37,7 @@ export const StyledNotification = styled.div`
         animation: TimerExit 29.5s linear;
     }
     @keyframes TimerExit {
-        0% {width: calc(100% - 48px);border-bottom-right-radius: 4px}
+        0% {width: calc(100% - 48px); border-bottom-right-radius: 4px}
         1% {border-bottom-right-radius: 0px}
         100% {width: 0px}
     }

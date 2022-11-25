@@ -1,19 +1,33 @@
 import react from "react";
 import styled from "styled-components";
-import { IconClose, IconPenNib} from "../../../icons";
+import { IconClose, IconPenNib } from "../../../icons";
 import GenericalCard from "../../genericalCard";
 import { StyledModalLetter } from "./style"
 
 const FormRegisterLetter = (props) => {
     const [currentTitle, setCurrentTitle] = react.useState("Nova carta");
+    const [pseudonyms, setPseudonyms] = react.useState(null);
+
+    react.useEffect(() => {
+        if(localStorage.getItem('token') === null)
+            localStorage.setItem('token', Math.random().toString(36).substring(2));
+        const getPseudonyms = async () => {
+            await fetch('https://middleware-hazel.vercel.app/REQUEST', { headers: { endpoint: `http://randomuser.me/api?nat=uk,us,br&inc=name&seed=${localStorage.getItem('token')}&noinfo` } }).then(async r => {
+                const result = await r.json();
+                setPseudonyms(`${result.results[0].name.title} ${result.results[0].name.first} ${result.results[0].name.last}`)
+            })
+        }
+        getPseudonyms();
+    }, []);
+
     return (<form>
         <StyledModalLetter>
             <GenericalCard
                 width={'90%'}
-                header={{ title: currentTitle, subtitle: 'Gerador de psedonimos', monogram: <IconPenNib />, iconButton: <IconClose />, HandleHeaderButton: props.HandleCloseForm}}
-                
+                header={{ title: currentTitle, subtitle: pseudonyms, monogram: <IconPenNib />, iconButton: <IconClose />, HandleHeaderButton: props.HandleCloseForm }}
+
                 media={{ backgroundColor: "rgba(218,220,224,255)" }}
-                textcontent={{title: <StyledInputTitle content='Titulo'><input name="title" value={currentTitle} onChange={(e) => setCurrentTitle(e.target.value)}/></StyledInputTitle>, component: <StyledTextcontent><textarea /></StyledTextcontent> }}
+                textcontent={{ title: <StyledInputTitle content='Titulo'><input name="title" value={currentTitle} onChange={(e) => setCurrentTitle(e.target.value)} /></StyledInputTitle>, component: <StyledTextcontent><textarea /></StyledTextcontent> }}
                 actions={{ component: <StyledActions><input type="submit" value="Salvar" /></StyledActions> }}
             />
 
@@ -24,8 +38,8 @@ const FormRegisterLetter = (props) => {
 const StyledInputTitle = styled.div`
     position: relative;
     box-sizing: border-box;
-    margin-bottom: ${({spaceBottom}) => spaceBottom};
-    border: solid 2px var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+    margin-bottom: ${({ spaceBottom }) => spaceBottom};
+    border: solid 2px var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
     padding: 8px 0px 8px 16px;
     border-radius: 4px;
     width: 25%;
@@ -35,10 +49,10 @@ const StyledInputTitle = styled.div`
         background-color: transparent;
     }
     &:after{
-        content: ${({content}) => `'${content}'`};
+        content: ${({ content }) => `'${content}'`};
         position: absolute;
-        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
-        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
+        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
         font-size: var(--m3--body--small);
         left: 12px;
         top: calc(-1 * (var(--m3--body--small) + 1.5px) / 2);
@@ -51,7 +65,7 @@ const StyledTextcontent = styled.div`
         position: relative;
         height: calc(98vh - 489px); 
         box-sizing: border-box;
-        border: solid 2px var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+        border: solid 2px var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
         padding: 8px 0px 8px 16px;
         border-radius: 4px;
         textarea{
@@ -63,8 +77,8 @@ const StyledTextcontent = styled.div`
         &:after{
             content: 'Texto';
             position: absolute;
-            background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
+            background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
+            color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
             font-size: var(--m3--body--small);
             left: 12px;
             top: calc(-1 * (var(--m3--body--small) + 1.5px) / 2);
@@ -77,14 +91,14 @@ const StyledActions = styled.div`
     flex: 1;
     justify-content: right;
     input{
-        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
-        color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-primary);
+        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
+        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-primary);
         border-radius: 24px / 24px;
         padding: 10px 24px;
         cursor: pointer;
         transition: box-shadow .2s linear, filter .2s linear;
         &:hover{
-            box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--1);
+            box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--1);
             filter: opacity(92%);
         }
     }

@@ -10,7 +10,7 @@ const Notification = (props) => {
     react.useEffect(() => {
         const intervalDestroyAfterTime = setInterval(() => {
             setDestroy(true);
-        }, 29500);
+        }, 29700);
 
         return () => clearInterval(intervalDestroyAfterTime);
     }, []);
@@ -18,7 +18,7 @@ const Notification = (props) => {
     react.useEffect(() => {
         const intervalDestroy = destroy && setInterval(() => {
             contextNot.remove(props.id);
-        }, 500);
+        }, 300);
         return () => destroy && clearInterval(intervalDestroy);
     }, [destroy]);
 
