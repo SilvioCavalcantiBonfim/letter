@@ -3,7 +3,7 @@ import { StyledGenericalCard } from "./style"
 
 const GenericalCard = (props) => {
     
-    return (<StyledGenericalCard width={props.width} media={{backgroundColor: props.media?.backgroundColor}}>
+    return (<StyledGenericalCard onClick={props.onClick} width={props.width} media={{backgroundColor: props.media?.backgroundColor}}>
         <div className="header">
             <div className="content">
                 <div className="monogram">{props.header?.monogram || <IconDefault />}</div>

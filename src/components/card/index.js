@@ -61,11 +61,11 @@ const Card = (props) => {
     // 
     return (<StyledConteiner
         onMouseOver={() => setHover(1)}
-        onMouseOut={() => setHover(0)}
-        onClick={(e) => (!refOptions.current.contains(e.target) && !refMenu.current.contains(e.target)) && setFocus(1)}>
+        onMouseOut={() => setHover(0)}>
         <div className={['mini', 'focus'][focus]} ref={refAnimation}>
             <div ref={refGlobal}>
-                <GenericalCard
+                <GenericalCard 
+                    onClick={(e) => (!refOptions.current.contains(e.target) && !refMenu.current.contains(e.target)) && setFocus(1)}
                     width={["360px", "100%"][focus]}
 
                     header={{
@@ -74,7 +74,8 @@ const Card = (props) => {
 
                         monogram: [<IconLetter />, <IconLetterOpen />][Hover],
                         iconRef: refOptions,
-                        iconButton: <div style={{ transform: `rotate(${[0, 90, 0][StateOptionMenu]}deg)`, transition: 'transform .1s linear' }}>
+                        iconButton: 
+                        <div style={{ transform: `rotate(${[0, 90, 0][StateOptionMenu]}deg)`, transition: 'transform .1s linear' }}>
                             <IconButton />
                         </div>,
 

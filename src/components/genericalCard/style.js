@@ -56,7 +56,7 @@ export const StyledGenericalCard = styled.div`
             color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
             align-items: center;
             justify-content: center;
-            z-index: 0;
+            z-index: -1;
             position: relative;
             .iconButton{
                 width: 40px;

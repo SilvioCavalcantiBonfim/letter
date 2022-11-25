@@ -10,21 +10,8 @@ export const StyledNotification = styled.div`
     color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
     box-shadow: var(--m3---elevation--light--3);
     margin: 4px 0px;
-    animation: ${({destroy}) => destroy? `destroyAnimation var(--animation--duration) linear`: `none`};
+    animation: ${({destroy}) => destroy? `destroyNotification var(--animation--duration) linear`: `constroyNotification var(--animation--duration) linear`};
     position: relative;
-
-    @keyframes destroyAnimation {
-        0% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
-        }
-    }
 
     .barTime{
         position: absolute;

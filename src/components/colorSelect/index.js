@@ -52,12 +52,12 @@ const ColorSelect = () => {
                     <div className="selectColorTitle">Fonte</div>
                     <Slide min={44} max={70} value={ThemeMode.fontSize} onChange={(e) => ThemeMode.setFontSize(e.target.value)}/>
                 </div>
-                <hr />
+                {/* <hr />
                 <div className="selectColorConteinerLinks">
                     <a className="LinkIcon" href="https://github.com/SilvioCavalcantiBonfim/letter" target="_blank" title="Projeto GitHub"><IconGit /></a>
                     <a className="LinkIcon" href={`https://www.linkedin.com/in/silvio-cavalcanti-1096768a`} target="_blank" title="Contato do Dev"><IconLinkedin /></a>
                     <a className="LinkIcon" href={`https://twitter.com/SilvioCBONFIM`} target="_blank" title="Contato do Dev"><IconTwitter /></a>
-                </div>
+                </div> */}
             </div>
 
         </div>

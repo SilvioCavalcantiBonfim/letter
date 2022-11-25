@@ -42,7 +42,6 @@ const NotificationControl = () => {
         {contextNot.notifications.map(e => {
             return <Notification text={e.text} id={e.id} type={e.type} key={e.id} />
         })}
-
     </StyledConteinerNotification>)
 }
 
