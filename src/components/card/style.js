@@ -1,5 +1,95 @@
 import styled from "styled-components";
 
+export const StyledCard = styled.div`
+    background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
+    outline: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--outline-variant) solid 1px;
+    color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-surface);
+    width: ${({width}) => width};
+    height: min-content;
+    border-radius: 12px;
+    .header{
+        padding: 12px 4px 12px 16px;
+        .content{
+            display: flex;
+            align-items: center;
+            flex: 1;
+            .monogram{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
+                color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-primary);
+            }
+            .contentText{
+                flex: 1;
+                flex-direction: column;
+                padding-left: 16px;
+                .textHeader{
+                    font-size: var(--m3--title--medium);
+                    font-weight: bold;
+                    height: 24px;
+                    align-items: center;
+                    text-transform: capitalize;
+                    display: flex;
+                }
+                .textSubhead{
+                    font-size: var(--m3--body--medium);
+                    font-style: italic;
+                    height: 20px;
+                    align-items: center;
+                    text-transform: capitalize;
+                    display: flex;
+                }
+            }
+            .iconButtonContent{
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .iconButton{
+                    display: flex;
+                    width: 40px;
+                    color: inherit;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 50%;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform .1s linear;
+                    &:hover, &:focus{
+                        background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-012);
+                    }
+                    &:focus{
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+        }
+    }
+    .media{
+        display: flex;
+        height: 188px;
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
+        justify-content: center;
+        .defualtMedia{
+            height: 100%;
+        }
+    }
+    .Textcontent{
+        flex-direction: column;
+        &>*{
+            padding: 16px;
+        }
+        .supportingText{
+            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
+            font-size: var(--m3--body--medium);
+        }
+    }
+`;
+
 export const StyledActions = styled.div`
     width: 100%;
     height: 44px;
@@ -9,7 +99,7 @@ export const StyledActions = styled.div`
         border-radius: 12px;
         text-transform: capitalize;
         background-color: transparent;
-        transition: box-shadow .3s, background-color .3s, color .3s;
+        transition: box-shadow var(--animation--duration), background-color var(--animation--duration), color var(--animation--duration);
         cursor: pointer;
         svg{
             margin: 10px;
@@ -19,12 +109,6 @@ export const StyledActions = styled.div`
         }
         &:hover{
             box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--4);
-        }
-        @keyframes buttonAnimation {
-            0% {transform: rotate(0deg);}
-            20% {transform: rotate(-20deg);}
-            40% {transform: rotate(20deg);}
-            60%{transform: rotate(0deg);}
         }
     }
 
@@ -47,10 +131,6 @@ export const StyledActions = styled.div`
 
 export const StyledConteiner = styled.div`
     width: min-content;
-    @keyframes blur {
-        0% {backdrop-filter: blur(0px); opacity: 0}
-        100% {backdrop-filter: blur(5px); opacity: 1}
-    }
     .mini{
         margin: 30px;
         width: min-content;
@@ -69,33 +149,21 @@ export const StyledConteiner = styled.div`
         justify-content: center;
         top: 0;
         left: 0;
-        animation: blur .3s linear forwards;
         &>div{
             display: flex;
             justify-content: center;
         }
     }
-    @keyframes blurRev {
-        0% {backdrop-filter: blur(5px); opacity: 1}
-        100% {backdrop-filter: blur(0px); opacity: 0}
+    .in{
+        animation: blur-in var(--animation--duration) var(--animation--timing--function);
+        &>div{
+            animation: scale-in-center var(--animation--duration) var(--animation--timing--function);
+        }
     }
     .out{
-        position: fixed;
-        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface005);
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(0px);
-        opacity: 0;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: 0;
-        left: 0;
-        animation: blurRev .3s linear forwards;
+        animation: blur-out var(--animation--duration) var(--animation--timing--function);
         &>div{
-            display: flex;
-            justify-content: center;
+            animation: scale-out-center var(--animation--duration) var(--animation--timing--function);
         }
     }
 `;
@@ -114,7 +182,6 @@ export const StyledTextContent = styled.div`
 
 export const StyledOptions = styled.div`
     position: absolute;
-    
     top: 44px;
     margin-top: 4px;
     left: -70px;
@@ -127,13 +194,13 @@ export const StyledOptions = styled.div`
         border-radius: 4px;
         animation: none;
         &.an1{
-            -webkit-animation: swing-in-top-bck var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-            animation: swing-in-top-bck  var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            -webkit-animation: swing-in-top-bck var(--animation--duration) var(--animation--timing--function);
+            animation: swing-in-top-bck  var(--animation--duration) var(--animation--timing--function);
         }   
 
         &.an2{
-            -webkit-animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
-            animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+            -webkit-animation: swing-out-top-bck  var(--animation--duration) var(--animation--timing--function);
+            animation: swing-out-top-bck  var(--animation--duration) var(--animation--timing--function);
         }
         .ShareButton{
             box-sizing: border-box;

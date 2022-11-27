@@ -7,7 +7,6 @@ export const StyledGenericalCard = styled.div`
     min-width: 360px;
     height: min-content;
     max-width: 98vw;
-    max-height: 98vh;
     width: ${({ width }) => width};
     border-radius: 12px;
     & *{
@@ -53,10 +52,8 @@ export const StyledGenericalCard = styled.div`
         .icon-button{
             width: 48px;
             height: 48px;
-            color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
             align-items: center;
             justify-content: center;
-            z-index: -1;
             position: relative;
             .iconButton{
                 width: 40px;
@@ -65,7 +62,7 @@ export const StyledGenericalCard = styled.div`
                 border-radius: 50%;
                 align-items: center;
                 justify-content: center;
-                z-index: 0;
+                /* z-index: 0; */
                 &:hover, &:focus{
                     background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-012);
                 }
@@ -74,7 +71,7 @@ export const StyledGenericalCard = styled.div`
     }
     .media{
         height: 188px;
-        background-color: ${({ media }) =>`${media.backgroundColor}` || `transparent`};
+        background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
         justify-content: center;
         .defualtMedia{
             height: 100%;

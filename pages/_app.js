@@ -6,6 +6,7 @@ import { CSSReset } from "../src/CSSReset";
 import { Variables } from "../src/CSS/variables";
 import ThemeModeProvider, { ThemeModeContext } from "../src/ThemeControl";
 import { Animations } from "../src/CSS/animations";
+import NotificationControl from "../src/components/notification";
 
 const Root = ({ Component, pageProps }) => {
     
@@ -17,6 +18,7 @@ const Root = ({ Component, pageProps }) => {
             <Animations/>
             <CSSReset />
             <RegisterLetter/>
+            <NotificationControl />
             <Component {...pageProps} />
         </ThemeProvider>);
 }

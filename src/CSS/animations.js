@@ -85,10 +85,10 @@ export const Animations = createGlobalStyle`
 
     @keyframes background-transition {
         ${({ theme }) => {
-            return theme.backgrounds.map((e, i) => {
-                return `${i / (theme.backgrounds.length - 1) * 100}%{background: url(${e})} ${i / (theme.backgrounds.length - 1) * 100 + 90/(theme.backgrounds.length - 1)}%{background: url(${e})} `
-            })
-        }}
+        return theme.backgrounds.map((e, i) => {
+            return `${i / (theme.backgrounds.length - 1) * 100}%{background: url(${e})} ${i / (theme.backgrounds.length - 1) * 100 + 90 / (theme.backgrounds.length - 1)}%{background: url(${e})} `
+        })
+    }}
     }
 
     @keyframes destroyNotification {
@@ -115,5 +115,59 @@ export const Animations = createGlobalStyle`
             transform: translateX(0);
             opacity: 1;
         }
+    }
+
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-out-center {
+        0% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes blur-in {
+        0% {
+            backdrop-filter: blur(0px); 
+            opacity: 0;
+        }
+        100% {
+            backdrop-filter: blur(5px); 
+            opacity: 1;
+        }
+    }
+
+    @keyframes blur-out {
+        0% {
+            backdrop-filter: blur(5px); 
+            opacity: 1;
+        }
+        100% {
+            backdrop-filter: blur(0px); 
+            opacity: 0;
+        }
+    }
+
+    @keyframes buttonAnimation {
+        0% {transform: rotate(0deg);}
+        20% {transform: rotate(-20deg);}
+        40% {transform: rotate(20deg);}
+        60%{transform: rotate(0deg);}
     }
 `;

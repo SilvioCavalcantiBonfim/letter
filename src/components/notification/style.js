@@ -6,11 +6,11 @@ export const StyledNotification = styled.div`
     padding: 0px;
     border-radius: 4px;
     display: flex;
-    background-color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error-container)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success-container)`][type]};
-    color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
+    background-color: ${({theme}) => `var(--m3--sys--${['dark','light'][theme.theme]}--surface)`};
+    color: ${({theme}) => `var(--m3--sys--${['dark','light'][theme.theme]}--on-surface)`};
     box-shadow: var(--m3---elevation--light--3);
     margin: 4px 0px;
-    animation: ${({destroy}) => destroy? `destroyNotification var(--animation--duration) linear`: `constroyNotification var(--animation--duration) linear`};
+    animation: ${({destroy}) => destroy? `destroyNotification var(--animation--duration) var(--animation--timing--function)`: `constroyNotification var(--animation--duration) var(--animation--timing--function)`};
     position: relative;
 
     .barTime{
@@ -36,7 +36,7 @@ export const StyledNotification = styled.div`
         align-items: center;
         justify-content: center;
         background-color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
-        color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error-container)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success-container)`][type]};
+        color: ${({theme}) => `var(--m3--sys--${['dark','light'][theme.theme]}--on-surface)`};
         svg{
             width: 24px;
             height: 24px;
@@ -58,16 +58,23 @@ export const StyledNotification = styled.div`
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        color: ${({type,theme}) => [`var(--m3--sys--${['light','dark'][theme.theme]}--error)`,`var(--m3--sys--${['light','dark'][theme.theme]}--success)`][type]};
+        color: inherit;
         background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         margin: 9px;
         &:hover{
-            background-color: var(--m3--state-layers--${({theme}) => ['light','dark'][theme.theme]}--primary--opacity-012);
+            background-color: var(--m3--state-layers--${({theme}) => ['dark','light'][theme.theme]}--primary--opacity-012);
         }
     }
 `;
 
 export const StyledConteinerNotification = styled.div`
     display: inline-block;
+    position: fixed;
+    /* z-index: 1000; */
+    left: 64px;
+    bottom: 30px;
 `;

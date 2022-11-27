@@ -1,9 +1,10 @@
 import react from "react";
-import {IconGit, IconLinkedin, IconSetting, IconTwitter } from "../../icons";
+import {IconGit, IconInstagram, IconLinkedin, IconSetting, IconTwitter } from "../../icons";
 import { ThemeModeContext } from "../../ThemeControl";
 import Slide from "./slide";
 import { StyledColor, StyledColorSelect } from "./style";
 import SwitchTheme from "./SwitchTheme";
+import Package from '../../../package.json';
 
 const ColorSelect = () => {
     const ThemeMode = react.useContext(ThemeModeContext);
@@ -47,17 +48,21 @@ const ColorSelect = () => {
                         })}
                     </div>
                 </div>
-                {/* <hr /> */}
                 <div className="selectColorConteiner">
                     <div className="selectColorTitle">Fonte</div>
                     <Slide min={44} max={70} value={ThemeMode.fontSize} onChange={(e) => ThemeMode.setFontSize(e.target.value)}/>
                 </div>
-                {/* <hr />
+                <hr />
                 <div className="selectColorConteinerLinks">
                     <a className="LinkIcon" href="https://github.com/SilvioCavalcantiBonfim/letter" target="_blank" title="Projeto GitHub"><IconGit /></a>
                     <a className="LinkIcon" href={`https://www.linkedin.com/in/silvio-cavalcanti-1096768a`} target="_blank" title="Contato do Dev"><IconLinkedin /></a>
                     <a className="LinkIcon" href={`https://twitter.com/SilvioCBONFIM`} target="_blank" title="Contato do Dev"><IconTwitter /></a>
-                </div> */}
+                    <a className="LinkIcon" href={`https://twitter.com/SilvioCBONFIM`} target="_blank" title="Contato do Dev"><IconInstagram /></a>
+                </div>
+                <hr />
+                <div className="selectColorConteiner">
+                    <div className="selectColorConteinerName">{Package.name} {Package.version}</div>
+                </div>
             </div>
 
         </div>

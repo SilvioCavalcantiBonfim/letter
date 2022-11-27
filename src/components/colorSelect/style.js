@@ -24,7 +24,7 @@ export const StyledColorSelect = styled.div`
         position: relative;
         display: inline-block;
         left: -265px;
-        z-index: 2;
+        /* z-index: 1000; */
     }
 
     .MenuColor{
@@ -41,14 +41,20 @@ export const StyledColorSelect = styled.div`
         border-radius: 4px;
 
         &.an1{
-            -webkit-animation: swing-in-top-bck var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-	        animation: swing-in-top-bck  var(--animation--duration) cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            -webkit-animation: swing-in-top-bck var(--animation--duration) var(--animation--timing--function);
+	        animation: swing-in-top-bck  var(--animation--duration) var(--animation--timing--function);
         }
         &.an2{
-            -webkit-animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
-	        animation: swing-out-top-bck  var(--animation--duration) cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+            -webkit-animation: swing-out-top-bck  var(--animation--duration) var(--animation--timing--function);
+	        animation: swing-out-top-bck  var(--animation--duration) var(--animation--timing--function);
         }
-        
+        .selectColorConteinerName{
+            width: 100%;
+            text-align: center;
+            font-size: var(--m3--body--small);
+            text-transform: capitalize;
+            opacity: 0.5;
+        }
         .selectColorConteinerLinks{
             height: 50px;
             display: flex;

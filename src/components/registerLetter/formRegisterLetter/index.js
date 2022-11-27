@@ -1,107 +1,75 @@
 import react from "react";
 import styled from "styled-components";
-import { IconClose, IconPenNib } from "../../../icons";
+import { IconClose, IconPenNib, IconRefresh } from "../../../icons";
 import GenericalCard from "../../genericalCard";
-import { StyledModalLetter } from "./style"
+import { StyledActions, StyledInput, StyledInputDesable, StyledModalLetter, StyledTextcontent, TextContentConteiner } from "./style"
 
 const FormRegisterLetter = (props) => {
-    const [currentTitle, setCurrentTitle] = react.useState("Nova carta");
+    const [currentTitle, setCurrentTitle] = react.useState('');
     const [pseudonyms, setPseudonyms] = react.useState(null);
+    const [seedPseudonyms, setSeedPseudonyms] = react.useState(null);
+    const [FocusInput, setFocusInput] = react.useState(0);
 
     react.useEffect(() => {
-        if(localStorage.getItem('token') === null)
+        seedPseudonyms !== null && getPseudonyms(seedPseudonyms);
+    }, [seedPseudonyms]);
+
+
+    const getPseudonyms = async (seed) => {
+        await fetch('https://middleware-hazel.vercel.app/REQUEST', { headers: { endpoint: `http://randomuser.me/api?nat=uk,us,br&inc=name&seed=${seed}&noinfo` } }).then(async r => {
+            const result = await r.json();
+            setPseudonyms(`${result.results[0].name.title} ${result.results[0].name.first} ${result.results[0].name.last}`)
+        })
+    }
+
+    react.useEffect(() => {
+        if (localStorage.getItem('token') === null)
             localStorage.setItem('token', Math.random().toString(36).substring(2));
-        const getPseudonyms = async () => {
-            await fetch('https://middleware-hazel.vercel.app/REQUEST', { headers: { endpoint: `http://randomuser.me/api?nat=uk,us,br&inc=name&seed=${localStorage.getItem('token')}&noinfo` } }).then(async r => {
-                const result = await r.json();
-                setPseudonyms(`${result.results[0].name.title} ${result.results[0].name.first} ${result.results[0].name.last}`)
-            })
-        }
-        getPseudonyms();
+        setSeedPseudonyms(localStorage.getItem('token'));
     }, []);
+
+    const updateSeed = (seed) => {
+        localStorage.setItem('token', seed);
+        setSeedPseudonyms(seed);
+    }
 
     return (<form>
         <StyledModalLetter>
             <GenericalCard
                 width={'90%'}
-                header={{ title: currentTitle, subtitle: pseudonyms, monogram: <IconPenNib />, iconButton: <IconClose />, HandleHeaderButton: props.HandleCloseForm }}
+                header={{ title: ' ', monogram: <IconPenNib />, iconButton: <IconClose />, HandleHeaderButton: props.HandleCloseForm }}
 
-                media={{ backgroundColor: "rgba(218,220,224,255)" }}
-                textcontent={{ title: <StyledInputTitle content='Titulo'><input name="title" value={currentTitle} onChange={(e) => setCurrentTitle(e.target.value)} /></StyledInputTitle>, component: <StyledTextcontent><textarea /></StyledTextcontent> }}
+                media={{
+                    backgroundColor: "var(--m3--sys--light--on-surface-variant)", 
+                    component: <div>
+                        <img src="" alt="" height='188'/>
+                        <input type='file' />
+                    </div>
+                }}
+                textcontent={{
+                    component: <TextContentConteiner>
+
+                        <StyledInput
+                            content='Titulo'
+                            spaceBottom='10px'
+                            clear={(currentTitle === '' && FocusInput === 0) ? 1 : 0}>
+                            <input name="title" value={currentTitle} onFocus={() => setFocusInput(1)} onBlur={() => setFocusInput(0)} onChange={(e) => setCurrentTitle(e.target.value)} />
+                        </StyledInput>
+
+                        <StyledInputDesable content='autor(a)' spaceBottom='32px'>
+                            <input name="title" defaultValue={pseudonyms} disabled />
+                            <button className="buttonInput" type="button" onClick={() => updateSeed(Math.random().toString(36).substring(2))}><IconRefresh /></button>
+                        </StyledInputDesable>
+                        <StyledTextcontent>
+                            <textarea />
+                        </StyledTextcontent>
+                    </TextContentConteiner>
+                }}
                 actions={{ component: <StyledActions><input type="submit" value="Salvar" /></StyledActions> }}
             />
 
         </StyledModalLetter>
     </form>);
 }
-
-const StyledInputTitle = styled.div`
-    position: relative;
-    box-sizing: border-box;
-    margin-bottom: ${({ spaceBottom }) => spaceBottom};
-    border: solid 2px var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
-    padding: 8px 0px 8px 16px;
-    border-radius: 4px;
-    width: 25%;
-    input{
-        height: 24px;
-        flex: 1;
-        background-color: transparent;
-    }
-    &:after{
-        content: ${({ content }) => `'${content}'`};
-        position: absolute;
-        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
-        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
-        font-size: var(--m3--body--small);
-        left: 12px;
-        top: calc(-1 * (var(--m3--body--small) + 1.5px) / 2);
-        padding: 0px 4px;
-    }
-`;
-
-const StyledTextcontent = styled.div`
-        flex: 1;
-        position: relative;
-        height: calc(98vh - 489px); 
-        box-sizing: border-box;
-        border: solid 2px var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
-        padding: 8px 0px 8px 16px;
-        border-radius: 4px;
-        textarea{
-            flex: 1;
-            resize: none;
-            background-color: inherit;
-            font-family : inherit;
-        }
-        &:after{
-            content: 'Texto';
-            position: absolute;
-            background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
-            color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
-            font-size: var(--m3--body--small);
-            left: 12px;
-            top: calc(-1 * (var(--m3--body--small) + 1.5px) / 2);
-            padding: 0px 4px;
-        }
-`;
-
-const StyledActions = styled.div`
-    display: flex;
-    flex: 1;
-    justify-content: right;
-    input{
-        background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--primary);
-        color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-primary);
-        border-radius: 24px / 24px;
-        padding: 10px 24px;
-        cursor: pointer;
-        transition: box-shadow .2s linear, filter .2s linear;
-        &:hover{
-            box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--1);
-            filter: opacity(92%);
-        }
-    }
-`;
 
 export default FormRegisterLetter;

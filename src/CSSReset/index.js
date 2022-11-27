@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import BACKGROUND1 from '../background/bg1.jpg';
 
 export const CSSReset = createGlobalStyle`
     #root, #__next {

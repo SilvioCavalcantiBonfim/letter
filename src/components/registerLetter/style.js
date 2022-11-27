@@ -1,21 +1,9 @@
 import styled from "styled-components";
 
 export const StyledRegister = styled.div`
-    .addLetterConteiner{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    .addLetterConteiner2{
-        width: 90%;
-        height: 100%;
-        padding: 30px 5%;
-        overflow: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        flex-wrap: wrap;
-    }
+    position: fixed;
+    right: 64px;
+    bottom: 30px;
     .addLetterButton{
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
         box-shadow: var(--m3---elevation--light--2);
@@ -24,10 +12,5 @@ export const StyledRegister = styled.div`
         cursor: pointer;
         width: 55px;
         height: 55px;
-    }
-    .addLetterConteinerButton{
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 `;
