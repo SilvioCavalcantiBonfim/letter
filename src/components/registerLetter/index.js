@@ -4,14 +4,14 @@ import FormRegisterLetter from './formRegisterLetter';
 import { StyledRegister } from './style';
 
 const RegisterLetter = () => {
-    const [ShowForm, setShowForm] = react.useState(false);
+    const [ShowForm, setShowForm] = react.useState(0);
     return (<>
         <StyledRegister>
-            <button className='addLetterButton' onClick={() => setShowForm(true)}>
+            <button className='addLetterButton' onClick={() => setShowForm(1)}>
                 <IconPen />
             </button>
         </StyledRegister>
-        {ShowForm && <FormRegisterLetter HandleCloseForm={() => setShowForm(false)} />}
+        {ShowForm !== 0 && <FormRegisterLetter HandleCloseForm={() => setShowForm(0)} />}
     </>);
 }
 

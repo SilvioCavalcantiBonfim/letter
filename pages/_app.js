@@ -10,10 +10,8 @@ import NotificationControl from "../src/components/notification";
 
 const Root = ({ Component, pageProps }) => {
     
-    const BackgroundsList = require.context('../src/background', true, /\.jpg$/).keys().map((key) => require(`../src/background${key.substring(1)}`).default.src);
-    
     const ModeContext = react.useContext(ThemeModeContext);
-    return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme, backgrounds: BackgroundsList}}>
+    return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
             <Variables/>
             <Animations/>
             <CSSReset />

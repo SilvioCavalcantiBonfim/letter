@@ -1,3 +1,4 @@
+import react from "react";
 import styled from "styled-components"
 import ColorSelect from "../colorSelect";
 import { StyledHeader } from "./style";
@@ -9,19 +10,31 @@ const StyleConteiner = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: -1;
+    background: url(${({background}) => background});
     background-attachment: fixed;
     background-size: 100% 100%;
-    animation: background-transition var(--animation--background--duration) linear alternate infinite;
+    transition: background 1s var(--animation--timing--function);
     filter: ${({ theme }) => `${theme.theme === 1 && 'grayscale(100%)'}`} ;
 `;
 
 const Header = (props) => {
+
+    const BackgroundsList = require.context('../../background', true, /\.jpg$/).keys().map((key) => require(`../../background${key.substring(1)}`).default.src);
+    const [currentBackground, setCurrentBackground] = react.useState(0);
+
+    react.useEffect(() => {
+        const nextBackground = setInterval(() => {
+            setCurrentBackground(v => (v+1)%BackgroundsList.length);
+        }, 9000);
+        return () => clearInterval(nextBackground);
+    }, [currentBackground]);
+
     return (<>
         <StyledHeader>
             <Logo />
             <ColorSelect />
         </StyledHeader>
-        <StyleConteiner/>
+        <StyleConteiner background={BackgroundsList[currentBackground]}/>
     </>);
 }
 

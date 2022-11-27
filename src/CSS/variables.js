@@ -4,7 +4,6 @@ export const Variables = createGlobalStyle`
     :root{
         /*Global Control animations and transition*/
         --animation--duration: .3s;
-        --animation--background--duration: ${({theme}) => theme.backgrounds.length*10}s;
         --animation--timing--function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 
         /* Effect styles */

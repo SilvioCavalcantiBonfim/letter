@@ -83,14 +83,6 @@ export const Animations = createGlobalStyle`
         }
     }
 
-    @keyframes background-transition {
-        ${({ theme }) => {
-        return theme.backgrounds.map((e, i) => {
-            return `${i / (theme.backgrounds.length - 1) * 100}%{background: url(${e})} ${i / (theme.backgrounds.length - 1) * 100 + 90 / (theme.backgrounds.length - 1)}%{background: url(${e})} `
-        })
-    }}
-    }
-
     @keyframes destroyNotification {
         0% {
             -webkit-transform: translateX(0);
@@ -169,5 +161,61 @@ export const Animations = createGlobalStyle`
         20% {transform: rotate(-20deg);}
         40% {transform: rotate(20deg);}
         60%{transform: rotate(0deg);}
+    }
+    @-webkit-keyframes shake-horizontal {
+        0%,
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70% {
+            -webkit-transform: translateX(-10px);
+                    transform: translateX(-10px);
+        }
+        20%,
+        40%,
+        60% {
+            -webkit-transform: translateX(10px);
+                    transform: translateX(10px);
+        }
+        80% {
+            -webkit-transform: translateX(8px);
+                    transform: translateX(8px);
+        }
+        90% {
+            -webkit-transform: translateX(-8px);
+                    transform: translateX(-8px);
+        }
+        }
+        @keyframes shake-horizontal {
+        0%,
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70% {
+            -webkit-transform: translateX(-10px);
+                    transform: translateX(-10px);
+        }
+        20%,
+        40%,
+        60% {
+            -webkit-transform: translateX(10px);
+                    transform: translateX(10px);
+        }
+        80% {
+            -webkit-transform: translateX(8px);
+                    transform: translateX(8px);
+        }
+        90% {
+            -webkit-transform: translateX(-8px);
+                    transform: translateX(-8px);
+        }
     }
 `;
