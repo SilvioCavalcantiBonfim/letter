@@ -94,6 +94,7 @@ export const StyledCard = styled.div`
         .supportingText{
             color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
             font-size: var(--m3--body--medium);
+            min-height: 90px;
         }
     }
 `;

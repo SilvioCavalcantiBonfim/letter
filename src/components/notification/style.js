@@ -12,7 +12,6 @@ export const StyledNotification = styled.div`
     margin: 4px 0px;
     animation: ${({destroy}) => destroy? `destroyNotification var(--animation--duration) var(--animation--timing--function)`: `constroyNotification var(--animation--duration) var(--animation--timing--function)`};
     position: relative;
-
     .barTime{
         position: absolute;
         width: 0px;
@@ -74,7 +73,7 @@ export const StyledNotification = styled.div`
 export const StyledConteinerNotification = styled.div`
     display: inline-block;
     position: fixed;
-    /* z-index: 1000; */
+    z-index: 1000;
     left: 64px;
     bottom: 30px;
 `;

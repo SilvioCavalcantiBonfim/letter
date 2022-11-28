@@ -1,6 +1,6 @@
 {
   "name": "letter",
-  "version": "0.6.1",
+  "version": "0.6.3",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
