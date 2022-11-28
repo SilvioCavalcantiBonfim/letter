@@ -4,9 +4,10 @@ export const StyledCard = styled.div`
     background-color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--surface);
     outline: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--outline-variant) solid 1px;
     color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-surface);
-    width: ${({width}) => width};
+    width: ${({StateFocus}) => ['360px', '90%','90%'][StateFocus]};
     height: min-content;
     border-radius: 12px;
+    min-width: ${({StateFocus}) => ['360px', '500px','500px'][StateFocus]};
     .header{
         padding: 12px 4px 12px 16px;
         .content{
@@ -34,6 +35,12 @@ export const StyledCard = styled.div`
                     align-items: center;
                     text-transform: capitalize;
                     display: flex;
+                    &>span{
+                        width: ${({StateFocus}) => ['236px', '90%','90%'][StateFocus]};;
+                        overflow: hidden;
+                        white-space: nowrap; 
+                        text-overflow: ellipsis;
+                    }
                 }
                 .textSubhead{
                     font-size: var(--m3--body--medium);
@@ -94,7 +101,14 @@ export const StyledActions = styled.div`
     width: 100%;
     height: 44px;
     display: flex;
+    align-items: center;
     justify-content: right;
+    .avaliation{
+        background: linear-gradient(90deg, var(--m3--ref--gold--primary${({theme}) => ['60','80'][theme.theme]}) ${({value}) => value*100}%, var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant) ${({value}) => value*100}%);
+        mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17.77L18.18 21.5L16.54 14.47L22 9.74L14.81 9.13L12 2.5L9.19 9.13L2 9.74L7.46 14.47L5.82 21.5L12 17.77Z' fill='%231C1B1F'/%3E%3C/svg%3E");
+        width: 120px;
+        height: 24px;
+    }
     button{
         border-radius: 12px;
         text-transform: capitalize;
@@ -185,7 +199,6 @@ export const StyledOptions = styled.div`
     top: 44px;
     margin-top: 4px;
     left: -70px;
-    
     .Options{
         display: ${({ StateOptionMenu }) => ["none", "inline-block", "inline-block"][StateOptionMenu]};
         opacity: ${({ StateOptionMenu }) => Number(StateOptionMenu !== 2)};

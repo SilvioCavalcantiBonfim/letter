@@ -9,6 +9,7 @@ export const StyledModalLetter = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: ${({state}) => ['scale-in-br','scale-out-br'][state]} var(--animation--duration) var(--animation--timing--function);
     .card{
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--surface);
         outline: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--outline-variant) solid 1px;
@@ -211,7 +212,7 @@ export const StyledInputDesable = styled.div`
         justify-content: center;
         align-items: center;
         &>svg{
-            /* background-color: transparent; */
+            animation: ${({stateButton}) => ['none', 'rotate360 .3s  ease-in'][stateButton]};
             color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-surface);
             border-radius: 50%;
             outline: var(--m3--state-layers--${({ theme }) => ['light', 'dark'][theme.theme]}--primary--opacity-008) 0px solid;
