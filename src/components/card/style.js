@@ -79,11 +79,11 @@ export const StyledCard = styled.div`
     .media{
         display: flex;
         height: 188px;
-        max-width: 360px;
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant);
         justify-content: center;
         .defualtMedia{
             height: 100%;
+            max-width: 360px;
         }
     }
     .Textcontent{
