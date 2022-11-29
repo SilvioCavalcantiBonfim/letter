@@ -23,6 +23,13 @@ const Header = (props) => {
     const [currentBackground, setCurrentBackground] = react.useState(0);
 
     react.useEffect(() => {
+        BackgroundsList.forEach(e => {
+            const preload = new Image();
+            preload.src = e;
+        });
+    }, []);
+    
+    react.useEffect(() => {
         const nextBackground = setInterval(() => {
             setCurrentBackground(v => (v+1)%BackgroundsList.length);
         }, 9000);

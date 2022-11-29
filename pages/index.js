@@ -3,6 +3,7 @@ import react from "react";
 import styled from "styled-components";
 import Card from "../src/components/card";
 import Header from "../src/components/header";
+import Loading from "../src/components/loading";
 import { SupaBase } from "../src/supabase";
 
 const StyledBody = styled.div`
@@ -19,23 +20,21 @@ const Page = () => {
     const [update, setUpdate] = react.useState(0);
 
     SupaBase.channel('*')
-    .on('postgres_changes', { event: '*', schema: '*' }, payload => {
-      setUpdate(0);
-    })
-    .subscribe()
+        .on('postgres_changes', { event: 'INSERT', schema: '*' }, payload => {
+            setContent(v => v.concat([payload.new]));
+        })
+        .subscribe()
 
     react.useEffect(() => {
         const dbreq = async () => {
-            update === 0 && await SupaBase.from(`letters`).select('*').then(r => {
+            update === 0 && await SupaBase.from(`letters`).select('*').order('complaint', { ascending: true }).then(r => {
                 r.data.map(e => {
                     setContent(v => {
-                        var auxV = v;
-                        auxV[e.id] = e;
-                        return auxV;
+                        return (v.map(e => JSON.stringify(e)).indexOf(JSON.stringify(e)) === -1) ? v.concat([e]) : v;
                     });
-                    setUpdate(1);
-                })
-            })
+                });
+                setUpdate(1);
+            });
         }
         dbreq();
     }, [update]);
@@ -45,8 +44,11 @@ const Page = () => {
             <title>Letter...</title>
         </Head>
         <Header />
-            {update === 1 && <StyledBody>{content.map(e => <Card {...e} key={e.id}/>)}</StyledBody>}
+        {update === 0 && <Loading/>}
+        {update === 1 && <StyledBody>{content.map((e, i) => <Card {...e} key={e.id} index={i} handle={setContent} />)}</StyledBody>}
     </>);
 }
+
+
 
 export default Page;

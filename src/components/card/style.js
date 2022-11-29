@@ -106,10 +106,20 @@ export const StyledActions = styled.div`
     align-items: center;
     justify-content: right;
     .avaliation{
-        background: linear-gradient(90deg, var(--m3--ref--gold--primary${({theme}) => ['60','80'][theme.theme]}) ${({value}) => value*100}%, var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-surface-variant) ${({value}) => value*100}%);
+        cursor: pointer;
+        background: ${({theme,hoverValue,value}) => 
+            [`linear-gradient(90deg, var(--m3--ref--gold--primary${['60','80'][theme.theme]}) ${value*100}%, 
+            var(--m3--ref--gold--primary${['80','60'][theme.theme]}) ${value*100}%, 
+            var(--m3--ref--gold--primary${['80','60'][theme.theme]}) ${hoverValue*100}%, 
+            var(--m3--sys--${['light', 'dark'][theme.theme]}--on-surface-variant) ${hoverValue*100}%)`,
+            `linear-gradient(90deg, var(--m3--ref--gold--primary${['80','60'][theme.theme]}) ${hoverValue*100}%, 
+            var(--m3--ref--gold--primary${['60','80'][theme.theme]}) ${hoverValue*100}%, 
+            var(--m3--ref--gold--primary${['60','80'][theme.theme]}) ${value*100}%, 
+            var(--m3--sys--${['light','dark'][theme.theme]}--on-surface-variant) ${value*100}%)`][Number(value > hoverValue)]};
         mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17.77L18.18 21.5L16.54 14.47L22 9.74L14.81 9.13L12 2.5L9.19 9.13L2 9.74L7.46 14.47L5.82 21.5L12 17.77Z' fill='%231C1B1F'/%3E%3C/svg%3E");
         width: 120px;
         height: 24px;
+        transition: background var(--animation--duration);
     }
     button{
         border-radius: 12px;
@@ -190,6 +200,7 @@ export const StyledTextContent = styled.div`
     text-justify: inter-word;
     flex-direction: column;
     overflow: auto;
+    max-height: calc(98vh - 368px);
     p{
         text-indent: 1.5em;
     }

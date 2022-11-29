@@ -2,11 +2,11 @@ import react from "react";
 import { ThemeProvider } from "styled-components";
 import NotificationProvider from "../src/components/notification/NotificationSystem";
 import RegisterLetter from "../src/components/registerLetter";
-import { CSSReset } from "../src/CSSReset";
 import { Variables } from "../src/CSS/variables";
 import ThemeModeProvider, { ThemeModeContext } from "../src/ThemeControl";
 import { Animations } from "../src/CSS/animations";
 import NotificationControl from "../src/components/notification";
+import { CSSReset } from "../src/CSS/reset";
 
 const Root = ({ Component, pageProps }) => {
     
@@ -14,7 +14,7 @@ const Root = ({ Component, pageProps }) => {
     return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
             <Variables/>
             <Animations/>
-            <CSSReset />
+            <CSSReset/>
             <RegisterLetter/>
             <NotificationControl />
             <Component {...pageProps} />

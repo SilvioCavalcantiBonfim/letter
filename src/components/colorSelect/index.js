@@ -57,7 +57,7 @@ const ColorSelect = () => {
                     <a className="LinkIcon" href="https://github.com/SilvioCavalcantiBonfim/letter" target="_blank" title="Projeto GitHub"><IconGit /></a>
                     <a className="LinkIcon" href={`https://www.linkedin.com/in/silvio-cavalcanti-1096768a`} target="_blank" title="Contato do Dev"><IconLinkedin /></a>
                     <a className="LinkIcon" href={`https://twitter.com/SilvioCBONFIM`} target="_blank" title="Contato do Dev"><IconTwitter /></a>
-                    <a className="LinkIcon" href={`https://twitter.com/SilvioCBONFIM`} target="_blank" title="Contato do Dev"><IconInstagram /></a>
+                    <a className="LinkIcon" href={`https://www.instagram.com/silviocavalcanti534/`} target="_blank" title="Contato do Dev"><IconInstagram /></a>
                 </div>
                 <hr />
                 <div className="selectColorConteiner">

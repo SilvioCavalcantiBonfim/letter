@@ -1,5 +1,6 @@
 import react from "react";
 import { IconButton, IconLetter, IconLetterOpen, IconShare, IconThumbDownLine, IconThumbUpLine, IconWarning } from "../../icons";
+import { SupaBase } from "../../supabase";
 import { NotificationContext } from "../notification/NotificationSystem";
 import { StyledActions, StyledConteiner, StyledOptions, StyledTextContent, StyledCard } from "./style";
 
@@ -9,6 +10,7 @@ const Card = (props) => {
 
     // estados
     const [Hover, setHover] = react.useState(0);
+    const [PropsCard, setPropsCard] = react.useState(props);
 
     // Referencias
     const refOptions = react.useRef(null);
@@ -50,14 +52,16 @@ const Card = (props) => {
         }, 300);
         return () => StateOptionMenu === 2 && clearInterval(overStateOptionMenu);
     }, [StateOptionMenu]);
-    //
+    //sistema de avaliação
+    const avaliationRef = react.useRef(null); 
+    const [currentAvaliation, setCurrentAvaliation] = react.useState(PropsCard.ratings);
     return (<StyledConteiner>
         <div className={['mini', 'focus in', 'focus out'][StateFocus]} ref={refAnimation}>
             <div ref={refGlobal}>
                 <StyledCard
                     onMouseOver={() => setHover(1)}
                     onMouseOut={() => setHover(0)}
-                    onClick={(e) => (!refOptions.current.contains(e.target) && !refMenu.current.contains(e.target)) && setStateFocus(1)}
+                    onClick={(e) => (!avaliationRef.current.contains(e.target) && !refOptions.current.contains(e.target) && !refMenu.current.contains(e.target)) && setStateFocus(1)}
                     StateFocus={StateFocus}
                     >
                     <div className="header">
@@ -65,9 +69,9 @@ const Card = (props) => {
                             <div className="monogram">{[<IconLetter />, <IconLetterOpen />][Hover]}</div>
                             <div className="contentText">
                                 <div className="textHeader">
-                                    <span>{props.title}</span>
+                                    <span>{PropsCard.title}</span>
                                 </div>
-                                <div className="textSubhead"><span>{props.pseudonyms}</span></div>
+                                <div className="textSubhead"><span>{PropsCard.pseudonyms}</span></div>
                             </div>
                             <div className="iconButtonContent" style={{ position: ['static', 'relative', 'relative'][StateOptionMenu] }}>
                                 <button
@@ -80,14 +84,16 @@ const Card = (props) => {
                                 <StyledOptions StateOptionMenu={StateOptionMenu} ref={refMenu}>
                                     <div className={`Options${['', ' an1', ' an2'][StateOptionMenu]}`}>
                                         <button className="ShareButton" onClick={() => {
-                                            contextNot.add({ id: Date.now(), text: `${props.title || 'Title'} copiado.`, type: 1 });
-                                            navigator.clipboard.writeText(`${props.title}\n${props.pseudonym}\n\n${props.text}`)
+                                            contextNot.add({ id: Date.now(), text: `${PropsCard.title || 'Title'} copiado.`, type: 1 });
+                                            navigator.clipboard.writeText(`${PropsCard.title}\n${PropsCard.pseudonym}\n\n${PropsCard.text}`)
                                         }}>
                                             <IconShare />
                                             <span>Copiar</span>
                                         </button>
-                                        <button className="WarningButton" onClick={() => {
-                                            contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${props.id})`, type: 0 })
+                                        <button className="WarningButton" onClick={async () => {
+                                            await SupaBase.from(`letters`).update({'complaint': PropsCard.complaint + 1}).eq('id',PropsCard.id).then(r => {
+                                                contextNot.add({ id: Date.now(), text: `Denuncia efetuada (#${PropsCard.id})`, type: 0 })
+                                            })
                                         }}>
                                             <IconWarning />
                                             <span>Denunciar</span>
@@ -98,15 +104,33 @@ const Card = (props) => {
                         </div>
                     </div>
                     <div className="media">
-                        <img className="defualtMedia" src={props.image} />
+                        <img className="defualtMedia" src={PropsCard.image} />
                     </div>
                     <div className="Textcontent">
                         <div className="supportingText">
-                            <StyledTextContent>{[<p>{props.text.substring(0,200)}...</p>, props.text.split('\n').map((e, i) => <p key={i}>{e}</p>), props.text.split('\n').map((e, i) => <p key={i}>{e}</p>)][StateFocus]}</StyledTextContent>
+                            <StyledTextContent>{[PropsCard.text.split('\n').slice(0,4), PropsCard.text.split('\n'), PropsCard.text.split('\n')][StateFocus].map((e, i) => <p key={i}>{e}</p>)}</StyledTextContent>
                         </div>
                         <div className="actions">
-                            <StyledActions value={props.evaluation}>
-                                <div className="avaliation"/>
+                            <StyledActions value={PropsCard.ratings} hoverValue={currentAvaliation}>
+                                <div 
+                                className="avaliation" 
+                                ref={avaliationRef}
+                                onMouseOut={(e) => {
+                                    setCurrentAvaliation(PropsCard.ratings);
+                                }}
+                                onMouseMove={(e) => {
+                                    const rect = avaliationRef.current.getBoundingClientRect();
+                                    setCurrentAvaliation(Number(((e.screenX - rect.left)/rect.width+0.01).toFixed(2)));
+                                }}
+                                onClick={async (e) => {
+                                    await SupaBase.from(`letters`).update({'ratings': (PropsCard.ratings*PropsCard.totalRatings + currentAvaliation)/(PropsCard.totalRatings + 1), 'totalRatings': PropsCard.totalRatings + 1}).eq('id',PropsCard.id).then(r => {
+                                        setPropsCard(v => {
+                                            return {...v, totalRatings: v.totalRatings+1, ratings: (v.ratings*v.totalRatings+currentAvaliation)/(v.totalRatings+1)};
+                                        })
+                                        contextNot.add({ id: Date.now(), text: `"${props.title}" Avaliado.`, type: 1 });
+                                    })
+                                }}
+                                />
                             </StyledActions>
                         </div>
                     </div>
