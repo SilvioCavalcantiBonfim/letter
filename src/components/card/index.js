@@ -1,5 +1,5 @@
 import react from "react";
-import { IconButton, IconLetter, IconLetterOpen, IconShare, IconThumbDownLine, IconThumbUpLine, IconWarning } from "../../icons";
+import { IconButton, IconLetter, IconLetterOpen, IconShare, IconWarning } from "../../icons";
 import { SupaBase } from "../../supabase";
 import { NotificationContext } from "../notification/NotificationSystem";
 import { StyledActions, StyledConteiner, StyledOptions, StyledTextContent, StyledCard } from "./style";

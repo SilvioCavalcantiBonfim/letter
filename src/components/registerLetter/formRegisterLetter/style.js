@@ -4,7 +4,7 @@ export const StyledModalLetter = styled.div`
     position: fixed;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--backdrop-filter--blur));
     z-index: 1;
     display: flex;
     align-items: center;
@@ -90,18 +90,18 @@ export const StyledModalLetter = styled.div`
                 align-items: center;
                 justify-content: center;
                 height: 100%;
-                transition: backdrop-filter .3s linear;
+                transition: backdrop-filter var(--animation--duration) var(--animation--timing--function);
                 cursor: pointer;
                 &>svg{
                     opacity: 0;
                     color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
-                    transition: opacity .3s linear;
+                    transition: opacity var(--animation--duration) var(--animation--timing--function);
                 }
                 &:hover>svg{
                     opacity: 1;
                 }
                 &:hover{
-                    backdrop-filter: blur(5px) grayscale(100%);
+                    backdrop-filter: blur(var(--backdrop-filter--blur)) grayscale(100%);
                 }
             }
             .defualtMedia{
@@ -149,7 +149,7 @@ export const StyledActions = styled.div`
         border-radius: 24px / 24px;
         padding: 10px 24px;
         cursor: pointer;
-        transition: box-shadow .2s linear, filter .2s linear;
+        transition: box-shadow var(--transition--duration) var(--transition--timing--function), filter var(--transition--duration) var(--transition--timing--function);
         &:hover{
             box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--1);
             filter: opacity(92%);
@@ -216,7 +216,7 @@ export const StyledInputDesable = styled.div`
             color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-surface);
             border-radius: 50%;
             outline: var(--m3--state-layers--${({ theme }) => ['light', 'dark'][theme.theme]}--primary--opacity-008) 0px solid;
-            transition: outline .1s linear;
+            transition: outline var(--transition--duration) var(--transition--timing--function);
         }
         &:hover>svg{
             outline: var(--m3--state-layers--${({ theme }) => ['light', 'dark'][theme.theme]}--primary--opacity-008) 10px solid;
@@ -273,7 +273,7 @@ export const StyledInput = styled.div`
         color: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--${({isvalid}) => ['error','primary'][isvalid]});
         font-size: ${({ clear }) => [`var(--m3--body--small)`, `var(--m3--body--large)`][clear]};
         transform:${({ clear }) => [`translateY(calc(-1 * (var(--m3--body--small) + 42px) / 2))`, `initial`][clear]};
-        transition: font-size .1s linear, transform .1s linear;
+        transition: font-size var(--transition--duration) var(--transition--timing--function), transform var(--transition--duration) var(--transition--timing--function);
         left: 12px;
         padding: 0px 4px;
     }

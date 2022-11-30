@@ -1,7 +1,5 @@
 import react from "react";
 
-// 1 - light
-// 0 - dark
 export const ThemeModeContext = react.createContext({});
 
 const ThemeModeProvider = (props) => {

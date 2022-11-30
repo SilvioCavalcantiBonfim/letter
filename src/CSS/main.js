@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const CSSReset = createGlobalStyle`
+export const CSSMain = createGlobalStyle`
     #root, #__next {
         isolation: isolate;
     }
@@ -20,7 +20,6 @@ export const CSSReset = createGlobalStyle`
     a {
         all: unset;
     }
-    
     * {
         padding: 0;
         margin: 0;
@@ -30,7 +29,7 @@ export const CSSReset = createGlobalStyle`
         -webkit-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        transition: background-color .1s linear;
+        transition: background var(--transition--duration) var(--transition--timing--function);
     }
     *:focus{
         outline: none;

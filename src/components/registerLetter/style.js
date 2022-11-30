@@ -6,7 +6,7 @@ export const StyledRegister = styled.div`
     bottom: 30px;
     .addLetterButton{
         background-color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--primary);
-        box-shadow: var(--m3---elevation--light--2);
+        box-shadow: var(--m3---elevation--${({theme}) => ['light','dark'][theme.theme]}--2);
         color: var(--m3--sys--${({theme}) => ['light','dark'][theme.theme]}--on-primary);
         border-radius: 12px;
         cursor: pointer;

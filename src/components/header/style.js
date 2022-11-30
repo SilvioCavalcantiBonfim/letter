@@ -13,3 +13,18 @@ export const StyledHeader = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
 `;
+
+
+export const StyleConteiner = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: url(${({background}) => background});
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    transition: background 1s var(--animation--timing--function);
+    filter: ${({ theme }) => `${theme.theme === 1 && 'grayscale(100%)'}`} ;
+`;

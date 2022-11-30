@@ -22,11 +22,7 @@ export const StyledNotification = styled.div`
         height: 3px;
         animation: TimerExit 29.5s linear;
     }
-    @keyframes TimerExit {
-        0% {width: calc(100% - 48px); border-bottom-right-radius: 4px}
-        1% {border-bottom-right-radius: 0px}
-        100% {width: 0px}
-    }
+    /*  */
     .NotificationIcon{
         width: 48px;
         height: 48px;

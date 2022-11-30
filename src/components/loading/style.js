@@ -1,21 +1,6 @@
 import styled from "styled-components";
 
 export const StyledLoading = styled.div`
-    @keyframes ldio-cmlfw0gne0o-1 {
-        0% { top: 36px; height: 128px }
-        50% { top: 60px; height: 80px }
-        100% { top: 60px; height: 80px }
-    }
-    @keyframes ldio-cmlfw0gne0o-2 {
-        0% { top: 41.99999999999999px; height: 116.00000000000001px }
-        50% { top: 60px; height: 80px }
-        100% { top: 60px; height: 80px }
-    }
-    @keyframes ldio-cmlfw0gne0o-3 {
-        0% { top: 48px; height: 104px }
-        50% { top: 60px; height: 80px }
-        100% { top: 60px; height: 80px }
-    }
     .ldio-cmlfw0gne0o div { position: absolute; width: 30px;box-shadow: var(--m3---elevation--${({ theme }) => ['light', 'dark'][theme.theme]}--2); }.ldio-cmlfw0gne0o div:nth-child(1) {
         left: 35px;
         background: var(--m3--sys--${({ theme }) => ['light', 'dark'][theme.theme]}--on-primary-container);

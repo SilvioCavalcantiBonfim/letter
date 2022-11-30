@@ -18,12 +18,9 @@ const Slide = (props) => {
                 max={props.max}
                 value={Value}
                 min={props.min}
-                onChange={(e) => {
-                    setValue(e.target.value);
-                    props.onChange(e);
-                }}
+                onChange={(e) => setValue(e.target.value)}
                 onMouseDown={() => setTrigger(1)}
-                onMouseUp={() => setTrigger(0)} />
+                onMouseUp={(e) => {setTrigger(0);props.onChange(e);}} />
         </div>
     </StyledSlide>);
 }

@@ -6,7 +6,7 @@ import { Variables } from "../src/CSS/variables";
 import ThemeModeProvider, { ThemeModeContext } from "../src/ThemeControl";
 import { Animations } from "../src/CSS/animations";
 import NotificationControl from "../src/components/notification";
-import { CSSReset } from "../src/CSS/reset";
+import { CSSMain } from "../src/CSS/main";
 
 const Root = ({ Component, pageProps }) => {
     
@@ -14,7 +14,7 @@ const Root = ({ Component, pageProps }) => {
     return (<ThemeProvider theme={{color: ModeContext.color, fontSize: ModeContext.fontSize, theme: ModeContext.theme}}>
             <Variables/>
             <Animations/>
-            <CSSReset/>
+            <CSSMain/>
             <RegisterLetter/>
             <NotificationControl />
             <Component {...pageProps} />
