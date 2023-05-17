@@ -1,5 +1,5 @@
 {
-    "project": "Asteroids",
-    "frameworks": ["createreactapp"],
-    "description": "Sistema em javascript baseado no jogo asteroids."
+    "project": "Letter",
+    "frameworks": ["react", "nextdotjs", "styledcomponents"],
+    "description": "Letter tem o objetivo de ser um acervo virtual em que pessoas podem publicar e avaliar poemas de forma anonima e online. "
 }
