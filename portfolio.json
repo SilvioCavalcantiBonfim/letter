@@ -1,5 +1,5 @@
 {
     "project": "Letter",
-    "frameworks": ["react", "nextdotjs", "styledcomponents"],
+    "frameworks": ["react", "nextdotjs", "styledcomponents", "materialdesign"],
     "description": "Letter tem o objetivo de ser um acervo virtual em que pessoas podem publicar e avaliar poemas de forma anonima e online. "
 }
