@@ -1,5 +1,31 @@
 {
     "project": "Letter",
-    "frameworks": ["react", "nextdotjs", "styledcomponents", "materialdesign"],
-    "description": "Letter tem o objetivo de ser um acervo virtual em que pessoas podem publicar e avaliar poemas de forma anonima e online. "
+    "technologies": [
+        {
+            "name": "React",
+            "iconUrl": "https://cdn.simpleicons.org/react"
+        },
+        {
+            "name": "Next.JS",
+            "iconUrl": "https://cdn.simpleicons.org/nextdotjs"
+        },
+        {
+            "name": "Styled Components",
+            "iconUrl": "https://cdn.simpleicons.org/styledcomponents"
+        },
+        {
+            "name": "Material Design",
+            "iconUrl": "https://cdn.simpleicons.org/materialdesign"
+        },
+        {
+            "name": "Supabase",
+            "iconUrl": "https://cdn.simpleicons.org/supabase"
+        }
+    ],
+    "deploy": [{
+        "url": "https://letter-phi.vercel.app/",
+        "urlIcon":"https://cdn.simpleicons.org/vercel"
+    }],
+    "description": "Letter tem o objetivo de ser um acervo virtual em que pessoas podem publicar e avaliar poemas de forma anonima e online. ",
+    "thumbnailUrl": "https://raw.githubusercontent.com/SilvioCavalcantiBonfim/letter/0.8.1/thumb.png"
 }
